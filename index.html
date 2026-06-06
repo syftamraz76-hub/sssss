@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,6 +42,10 @@
       overflow-x: hidden;
     }
 
+    body.ar {
+      font-family: Tahoma, Arial, sans-serif;
+    }
+
     body::before {
       content: "";
       position: fixed;
@@ -68,6 +72,41 @@
       z-index: -2;
     }
 
+    .langSwitch {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(0, 10, 12, 0.78);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .flagBtn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid transparent;
+      border-radius: 50%;
+      background: rgba(141, 248, 242, 0.06);
+      cursor: pointer;
+      font-size: 24px;
+      transition: 0.18s ease;
+    }
+
+    .flagBtn:hover,
+    .flagBtn.active {
+      border-color: var(--accent);
+      background: rgba(141, 248, 242, 0.18);
+      box-shadow: 0 0 22px rgba(141, 248, 242, 0.25);
+      transform: translateY(-1px);
+    }
+
     .wrap {
       width: min(1450px, calc(100% - 28px));
       margin: 0 auto;
@@ -88,6 +127,7 @@
       position: sticky;
       top: 12px;
       z-index: 20;
+      padding-right: 120px;
     }
 
     .brand {
@@ -226,6 +266,11 @@
       font-family: inherit;
     }
 
+    body.ar .search input {
+      padding: 16px 48px 16px 18px;
+      direction: rtl;
+    }
+
     .search input:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 4px rgba(141, 248, 242, 0.10);
@@ -238,6 +283,11 @@
       transform: translateY(-50%);
       color: var(--accent);
       font-size: 18px;
+    }
+
+    body.ar .search b {
+      left: auto;
+      right: 17px;
     }
 
     .tabsBox {
@@ -387,6 +437,11 @@
       font-size: 12px;
     }
 
+    body.ar thead th {
+      text-align: right;
+      direction: rtl;
+    }
+
     tbody td {
       padding: 13px 16px;
       border-bottom: 1px solid rgba(141, 248, 242, 0.11);
@@ -394,6 +449,9 @@
       color: #eaffff;
       font-size: 13px;
       line-height: 1.45;
+      direction: ltr;
+      text-align: left;
+      font-family: Consolas, "Courier New", monospace;
     }
 
     tbody tr:hover td {
@@ -480,6 +538,13 @@
         top: 0;
         align-items: flex-start;
         flex-direction: column;
+        padding-right: 18px;
+      }
+
+      .langSwitch {
+        top: auto;
+        bottom: 18px;
+        right: 18px;
       }
 
       .controls,
@@ -531,27 +596,32 @@
 </head>
 
 <body>
+  <div class="langSwitch">
+    <button class="flagBtn active" id="enBtn" title="English">🇺🇸</button>
+    <button class="flagBtn" id="arBtn" title="العربية">🇸🇦</button>
+  </div>
+
   <div class="wrap">
     <header class="top">
       <div class="brand">
         <img id="logo1" alt="FBI VRP Logo" />
         <div>
-          <h1>GenderSwap Unlocks</h1>
-          <span>FBI VRP Database</span>
+          <h1 data-i18n="brandTitle">GenderSwap Unlocks</h1>
+          <span data-i18n="brandSub">FBI VRP Database</span>
         </div>
       </div>
 
       <div class="topBtns">
-        <button class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">Home</button>
-        <button class="btn" onclick="scrollToTable()">Table</button>
+        <button class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" data-i18n="homeBtn">Home</button>
+        <button class="btn" onclick="scrollToTable()" data-i18n="tableBtn">Table</button>
       </div>
     </header>
 
     <section class="hero">
       <div class="heroContent">
-        <small>2025 update coming soon</small>
-        <h2>Male Clothing Unlocks</h2>
-        <p>
+        <small data-i18n="heroSmall">2025 update coming soon</small>
+        <h2 data-i18n="heroTitle">Male Clothing Unlocks</h2>
+        <p data-i18n="heroText">
           FBI VRP styled GenderSwap unlocks page. Male + Clothing is available now.
           Female and Tattoos are marked as unavailable currently.
         </p>
@@ -563,23 +633,23 @@
         <b>⌕</b>
         <input id="searchInput" type="search" placeholder="Search Item / Buy Item / Location..." autocomplete="off" />
       </div>
-      <button class="btn" id="clearBtn">Clear Search</button>
+      <button class="btn" id="clearBtn" data-i18n="clearBtn">Clear Search</button>
     </section>
 
     <section class="tabsBox">
       <div class="tabPanel">
-        <div class="tabTitle">Gender</div>
+        <div class="tabTitle" data-i18n="genderTitle">Gender</div>
         <div class="tabs">
-          <button class="tab active" data-gender="male">Male</button>
-          <button class="tab" data-gender="female">Female</button>
+          <button class="tab active" data-gender="male" data-i18n="maleBtn">Male</button>
+          <button class="tab" data-gender="female" data-i18n="femaleBtn">Female</button>
         </div>
       </div>
 
       <div class="tabPanel">
-        <div class="tabTitle">Type</div>
+        <div class="tabTitle" data-i18n="typeTitle">Type</div>
         <div class="tabs">
-          <button class="tab active" data-type="clothing">Clothing</button>
-          <button class="tab" data-type="tattoos">Tattoos</button>
+          <button class="tab active" data-type="clothing" data-i18n="clothingBtn">Clothing</button>
+          <button class="tab" data-type="tattoos" data-i18n="tattoosBtn">Tattoos</button>
         </div>
       </div>
     </section>
@@ -587,19 +657,19 @@
     <section class="stats">
       <div class="stat">
         <b id="totalCount">0</b>
-        <span>Total Rows</span>
+        <span data-i18n="totalRows">Total Rows</span>
       </div>
       <div class="stat">
         <b id="visibleCountTop">0</b>
-        <span>Visible Rows</span>
+        <span data-i18n="visibleRows">Visible Rows</span>
       </div>
       <div class="stat">
         <b id="sectionCount">0</b>
-        <span>Sections</span>
+        <span data-i18n="sectionsText">Sections</span>
       </div>
       <div class="stat">
-        <b>Male</b>
-        <span>Current Gender</span>
+        <b id="currentGenderText">Male</b>
+        <span data-i18n="currentGender">Current Gender</span>
       </div>
     </section>
 
@@ -607,7 +677,7 @@
       <div class="tableHeader">
         <div>
           <h3 id="tableTitle">Male Clothing</h3>
-          <p>Item / Buy Item / Location</p>
+          <p id="tableSub">Item / Buy Item / Location</p>
         </div>
         <div class="count" id="visibleCount">0 results</div>
       </div>
@@ -616,9 +686,9 @@
         <table id="dataTable">
           <thead>
             <tr>
-              <th style="width: 34%;">Item</th>
-              <th style="width: 33%;">Buy Item</th>
-              <th style="width: 33%;">Location</th>
+              <th style="width: 34%;" id="itemHead">Item</th>
+              <th style="width: 33%;" id="buyHead">Buy Item</th>
+              <th style="width: 33%;" id="locationHead">Location</th>
             </tr>
           </thead>
           <tbody id="tableBody"></tbody>
@@ -627,14 +697,14 @@
         <div class="unavailable" id="unavailable">
           <div class="unavailableBox">
             <img id="logo2" alt="FBI VRP Logo" />
-            <h3>غير متوفرة حاليا</h3>
-            <p>هذا القسم غير مضاف حاليا. تقدر تضيفه بعدين من نفس ملف HTML بسهولة.</p>
+            <h3 id="unavailableTitle">غير متوفرة حاليا</h3>
+            <p id="unavailableText">هذا القسم غير مضاف حاليا. تقدر تضيفه بعدين من نفس ملف HTML بسهولة.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="footer">
+    <div class="footer" data-i18n="footerText">
       FBI VRP © 2025 — GenderSwap Unlocks
     </div>
   </div>
@@ -1279,7 +1349,83 @@ Impotent Rage Outfit	Pineapple Mask	Masks -> Casino
 Epsilon Medallion	Grapes Mask	Masks -> Casino
     `;
 
+    const translations = {
+      en: {
+        htmlLang: "en",
+        dir: "ltr",
+        brandTitle: "GenderSwap Unlocks",
+        brandSub: "FBI VRP Database",
+        homeBtn: "Home",
+        tableBtn: "Table",
+        heroSmall: "2025 update coming soon",
+        heroTitle: "Male Clothing Unlocks",
+        heroText: "FBI VRP styled GenderSwap unlocks page. Male + Clothing is available now. Female and Tattoos are marked as unavailable currently.",
+        searchPlaceholder: "Search Item / Buy Item / Location...",
+        clearBtn: "Clear Search",
+        genderTitle: "Gender",
+        maleBtn: "Male",
+        femaleBtn: "Female",
+        typeTitle: "Type",
+        clothingBtn: "Clothing",
+        tattoosBtn: "Tattoos",
+        totalRows: "Total Rows",
+        visibleRows: "Visible Rows",
+        sectionsText: "Sections",
+        currentGender: "Current Gender",
+        tableSub: "Item / Buy Item / Location",
+        itemHead: "Item",
+        buyHead: "Buy Item",
+        locationHead: "Location",
+        unavailableTitle: "Unavailable currently",
+        unavailableText: "This section is not added currently. You can add it later from the same HTML file easily.",
+        footerText: "FBI VRP © 2025 — GenderSwap Unlocks",
+        results: "results",
+        noResults: "No results",
+        maleText: "Male",
+        femaleText: "Female",
+        clothingText: "Clothing",
+        tattoosText: "Tattoos"
+      },
+      ar: {
+        htmlLang: "ar",
+        dir: "rtl",
+        brandTitle: "قائمة GenderSwap Unlocks",
+        brandSub: "قاعدة بيانات FBI VRP",
+        homeBtn: "الرئيسية",
+        tableBtn: "الجدول",
+        heroSmall: "تحديث 2025 قريبا",
+        heroTitle: "قائمة ملابس الذكور",
+        heroText: "صفحة GenderSwap بتصميم FBI VRP. قسم Male + Clothing متوفر حاليا. قسم Female و Tattoos غير متوفرة حاليا.",
+        searchPlaceholder: "ابحث عن الغرض / الي لازم تشتريه / اسم الخيار...",
+        clearBtn: "مسح البحث",
+        genderTitle: "الجنس",
+        maleBtn: "ذكر",
+        femaleBtn: "أنثى",
+        typeTitle: "النوع",
+        clothingBtn: "الملابس",
+        tattoosBtn: "التاتو",
+        totalRows: "إجمالي الصفوف",
+        visibleRows: "الصفوف الظاهرة",
+        sectionsText: "الأقسام",
+        currentGender: "الجنس الحالي",
+        tableSub: "الغرض الي بيجيك / الي لازم تشتريه / اسم الخيار",
+        itemHead: "الغرض الي بيجيك",
+        buyHead: "الي لازم تشتريه",
+        locationHead: "اسم الخيار",
+        unavailableTitle: "غير متوفرة حاليا",
+        unavailableText: "هذا القسم غير مضاف حاليا. تقدر تضيفه بعدين من نفس ملف HTML بسهولة.",
+        footerText: "FBI VRP © 2025 — قائمة GenderSwap Unlocks",
+        results: "نتيجة",
+        noResults: "لا توجد نتائج",
+        maleText: "ذكر",
+        femaleText: "أنثى",
+        clothingText: "ملابس",
+        tattoosText: "تاتو"
+      }
+    };
+
     const state = {
+      lang: "en",
       gender: "male",
       type: "clothing",
       search: ""
@@ -1301,9 +1447,7 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
           const parts = line.split("\t").map(x => x.trim());
 
           if (parts.length < 3) {
-            return {
-              section: line
-            };
+            return { section: line };
           }
 
           return {
@@ -1321,6 +1465,10 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
+    }
+
+    function t(key) {
+      return translations[state.lang][key] || key;
     }
 
     function isAvailable() {
@@ -1341,6 +1489,32 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
       });
     }
 
+    function setLanguage(lang) {
+      state.lang = lang;
+
+      document.documentElement.lang = t("htmlLang");
+      document.documentElement.dir = t("dir");
+      document.body.classList.toggle("ar", lang === "ar");
+
+      document.getElementById("enBtn").classList.toggle("active", lang === "en");
+      document.getElementById("arBtn").classList.toggle("active", lang === "ar");
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        el.textContent = t(key);
+      });
+
+      searchInput.placeholder = t("searchPlaceholder");
+      document.getElementById("itemHead").textContent = t("itemHead");
+      document.getElementById("buyHead").textContent = t("buyHead");
+      document.getElementById("locationHead").textContent = t("locationHead");
+      document.getElementById("tableSub").textContent = t("tableSub");
+      document.getElementById("unavailableTitle").textContent = t("unavailableTitle");
+      document.getElementById("unavailableText").textContent = t("unavailableText");
+
+      render();
+    }
+
     function render() {
       updateTabs();
 
@@ -1349,11 +1523,14 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
       table.style.display = available ? "table" : "none";
       unavailable.classList.toggle("show", !available);
 
-      document.getElementById("tableTitle").textContent =
-        `${capitalize(state.gender)} ${capitalize(state.type)}`;
+      const genderLabel = state.gender === "male" ? t("maleText") : t("femaleText");
+      const typeLabel = state.type === "clothing" ? t("clothingText") : t("tattoosText");
+
+      document.getElementById("tableTitle").textContent = `${genderLabel} ${typeLabel}`;
+      document.getElementById("currentGenderText").textContent = genderLabel;
 
       if (!available) {
-        document.getElementById("visibleCount").textContent = "غير متوفرة حاليا";
+        document.getElementById("visibleCount").textContent = t("unavailableTitle");
         document.getElementById("visibleCountTop").textContent = "0";
         return;
       }
@@ -1385,7 +1562,8 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
       document.getElementById("totalCount").textContent = normalRows;
       document.getElementById("visibleCountTop").textContent = visibleRows;
       document.getElementById("sectionCount").textContent = sections;
-      document.getElementById("visibleCount").textContent = `${visibleRows} results`;
+      document.getElementById("visibleCount").textContent =
+        visibleRows ? `${visibleRows} ${t("results")}` : t("noResults");
     }
 
     function updateTabs() {
@@ -1396,10 +1574,6 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
       document.querySelectorAll("[data-type]").forEach(btn => {
         btn.classList.toggle("active", btn.dataset.type === state.type);
       });
-    }
-
-    function capitalize(value) {
-      return value.charAt(0).toUpperCase() + value.slice(1);
     }
 
     document.querySelectorAll("[data-gender]").forEach(btn => {
@@ -1427,6 +1601,9 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
       render();
     });
 
+    document.getElementById("enBtn").addEventListener("click", () => setLanguage("en"));
+    document.getElementById("arBtn").addEventListener("click", () => setLanguage("ar"));
+
     function scrollToTable() {
       document.getElementById("tableArea").scrollIntoView({
         behavior: "smooth",
@@ -1434,7 +1611,7 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
       });
     }
 
-    render();
+    setLanguage("en");
   </script>
 </body>
 </html>
