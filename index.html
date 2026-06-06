@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FBI VRP | GenderSwap Unlocks</title>
+
+  <style>
+    :root {
+      --bg: #020607;
+      --panel: rgba(7, 18, 21, 0.92);
+      --panel2: rgba(10, 28, 31, 0.82);
+      --line: rgba(136, 255, 248, 0.25);
+      --line2: rgba(136, 255, 248, 0.55);
+      --text: #ecffff;
+      --muted: #83a7a9;
+      --accent: #8df8f2;
+      --accent2: #3ad9d1;
+      --darkAccent: #073b3c;
+      --shadow: 0 0 45px rgba(97, 255, 247, 0.18);
+      --logo: url("https://media.discordapp.net/attachments/1402874675419152384/1512818787890630777/image.png?ex=6a2579c9&is=6a242849&hm=476b365eeacc37fcb3df60151d279edca7c0656c4a297eca55a1f5ac7b2d5da6&=&format=webp&quality=lossless");
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Consolas, "Courier New", monospace;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 25% 0%, rgba(141, 248, 242, 0.14), transparent 32%),
+        radial-gradient(circle at 78% 12%, rgba(58, 217, 209, 0.12), transparent 30%),
+        linear-gradient(135deg, #000 0%, #061113 45%, #020405 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: var(--logo);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: min(760px, 90vw);
+      opacity: 0.055;
+      pointer-events: none;
+      z-index: -3;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(141, 248, 242, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(141, 248, 242, 0.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    .wrap {
+      width: min(1450px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 22px 0 50px;
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(4, 13, 15, 0.76);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 12px;
+      z-index: 20;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand img {
+      width: 64px;
+      height: 64px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid var(--line2);
+      box-shadow: 0 0 26px rgba(141, 248, 242, 0.28);
+      background: #000;
+    }
+
+    .brand h1 {
+      font-size: clamp(20px, 3vw, 34px);
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-shadow: 0 0 22px rgba(141, 248, 242, 0.45);
+      line-height: 1.05;
+    }
+
+    .brand span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .topBtns {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      background: rgba(141, 248, 242, 0.07);
+      color: var(--text);
+      padding: 11px 15px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 800;
+      transition: 0.18s ease;
+      font-family: inherit;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: #001415;
+      box-shadow: 0 0 28px rgba(141, 248, 242, 0.28);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      margin-top: 22px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background:
+        linear-gradient(135deg, rgba(8, 21, 24, 0.94), rgba(1, 7, 9, 0.92)),
+        radial-gradient(circle at 80% 20%, rgba(141, 248, 242, 0.14), transparent 34%);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      padding: 32px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--logo);
+      background-repeat: no-repeat;
+      background-position: right -70px center;
+      background-size: 390px;
+      opacity: 0.09;
+      pointer-events: none;
+    }
+
+    .heroContent {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero small {
+      color: var(--accent);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    .hero h2 {
+      margin-top: 10px;
+      font-size: clamp(36px, 6vw, 70px);
+      line-height: 0.95;
+      letter-spacing: -2px;
+      color: #f6ffff;
+      text-shadow: 0 0 28px rgba(141, 248, 242, 0.22);
+    }
+
+    .hero p {
+      margin-top: 18px;
+      max-width: 850px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .search {
+      position: relative;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 16px 18px 16px 48px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      outline: none;
+      background: rgba(0, 8, 10, 0.82);
+      color: var(--text);
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    .search input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(141, 248, 242, 0.10);
+    }
+
+    .search b {
+      position: absolute;
+      left: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent);
+      font-size: 18px;
+    }
+
+    .tabsBox {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .tabPanel {
+      border: 1px solid var(--line);
+      background: rgba(3, 13, 15, 0.72);
+      border-radius: 22px;
+      padding: 12px;
+      box-shadow: inset 0 0 24px rgba(141, 248, 242, 0.03);
+    }
+
+    .tabTitle {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .tab {
+      border: 1px solid var(--line);
+      background: rgba(141, 248, 242, 0.06);
+      color: var(--text);
+      padding: 14px 12px;
+      border-radius: 16px;
+      cursor: pointer;
+      font-weight: 900;
+      font-family: inherit;
+      transition: 0.18s ease;
+    }
+
+    .tab:hover,
+    .tab.active {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #001415;
+      border-color: rgba(141, 248, 242, 0.95);
+      box-shadow: 0 0 26px rgba(141, 248, 242, 0.22);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 13px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(5, 16, 19, 0.78);
+      padding: 17px;
+    }
+
+    .stat b {
+      display: block;
+      color: var(--accent);
+      font-size: 28px;
+      text-shadow: 0 0 16px rgba(141, 248, 242, 0.35);
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .tableCard {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background:
+        linear-gradient(180deg, rgba(6, 18, 21, 0.94), rgba(1, 7, 9, 0.96));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .tableHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(141, 248, 242, 0.055);
+    }
+
+    .tableHeader h3 {
+      color: var(--accent);
+      font-size: 19px;
+      letter-spacing: 0.5px;
+    }
+
+    .tableHeader p {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .count {
+      color: var(--accent);
+      border: 1px solid var(--line);
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(141, 248, 242, 0.07);
+      white-space: nowrap;
+      font-size: 12px;
+    }
+
+    .tableScroll {
+      max-height: 720px;
+      overflow: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 900px;
+      border-collapse: collapse;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      padding: 15px 16px;
+      background: rgba(1, 9, 11, 0.98);
+      border-bottom: 1px solid var(--line2);
+      border-right: 1px solid var(--line);
+      color: var(--accent);
+      text-align: left;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 12px;
+    }
+
+    tbody td {
+      padding: 13px 16px;
+      border-bottom: 1px solid rgba(141, 248, 242, 0.11);
+      border-right: 1px solid rgba(141, 248, 242, 0.10);
+      color: #eaffff;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    tbody tr:hover td {
+      background: rgba(141, 248, 242, 0.065);
+    }
+
+    .sectionRow td {
+      background: linear-gradient(90deg, rgba(141, 248, 242, 0.16), rgba(141, 248, 242, 0.035));
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      font-size: 13px;
+      padding: 15px 16px;
+      border-top: 1px solid var(--line2);
+      border-bottom: 1px solid var(--line2);
+    }
+
+    .sectionRow span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sectionRow span::before {
+      content: "▣";
+      color: var(--accent);
+      text-shadow: 0 0 12px rgba(141, 248, 242, 0.6);
+    }
+
+    .unavailable {
+      display: none;
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    .unavailable.show {
+      display: block;
+    }
+
+    .unavailableBox {
+      width: min(520px, 100%);
+      margin: 0 auto;
+      border: 1px solid var(--line2);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(141, 248, 242, 0.15), transparent 34%),
+        rgba(2, 12, 14, 0.85);
+      border-radius: 28px;
+      padding: 34px 22px;
+      box-shadow: 0 0 40px rgba(141, 248, 242, 0.18);
+    }
+
+    .unavailableBox img {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid var(--line2);
+      box-shadow: 0 0 30px rgba(141, 248, 242, 0.23);
+      margin-bottom: 18px;
+    }
+
+    .unavailableBox h3 {
+      color: var(--accent);
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .unavailableBox p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 26px 0 0;
+      font-size: 12px;
+    }
+
+    @media (max-width: 850px) {
+      .top {
+        position: relative;
+        top: 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .controls,
+      .tabsBox {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero {
+        padding: 22px;
+      }
+
+      .tableHeader {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .wrap {
+        width: min(100% - 18px, 1450px);
+      }
+
+      .brand img {
+        width: 54px;
+        height: 54px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .tabs {
+        grid-template-columns: 1fr;
+      }
+
+      .topBtns {
+        width: 100%;
+      }
+
+      .topBtns .btn {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <img id="logo1" alt="FBI VRP Logo" />
+        <div>
+          <h1>GenderSwap Unlocks</h1>
+          <span>FBI VRP Database</span>
+        </div>
+      </div>
+
+      <div class="topBtns">
+        <button class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">Home</button>
+        <button class="btn" onclick="scrollToTable()">Table</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="heroContent">
+        <small>2025 update coming soon</small>
+        <h2>Male Clothing Unlocks</h2>
+        <p>
+          FBI VRP styled GenderSwap unlocks page. Male + Clothing is available now.
+          Female and Tattoos are marked as unavailable currently.
+        </p>
+      </div>
+    </section>
+
+    <section class="controls">
+      <div class="search">
+        <b>⌕</b>
+        <input id="searchInput" type="search" placeholder="Search Item / Buy Item / Location..." autocomplete="off" />
+      </div>
+      <button class="btn" id="clearBtn">Clear Search</button>
+    </section>
+
+    <section class="tabsBox">
+      <div class="tabPanel">
+        <div class="tabTitle">Gender</div>
+        <div class="tabs">
+          <button class="tab active" data-gender="male">Male</button>
+          <button class="tab" data-gender="female">Female</button>
+        </div>
+      </div>
+
+      <div class="tabPanel">
+        <div class="tabTitle">Type</div>
+        <div class="tabs">
+          <button class="tab active" data-type="clothing">Clothing</button>
+          <button class="tab" data-type="tattoos">Tattoos</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <b id="totalCount">0</b>
+        <span>Total Rows</span>
+      </div>
+      <div class="stat">
+        <b id="visibleCountTop">0</b>
+        <span>Visible Rows</span>
+      </div>
+      <div class="stat">
+        <b id="sectionCount">0</b>
+        <span>Sections</span>
+      </div>
+      <div class="stat">
+        <b>Male</b>
+        <span>Current Gender</span>
+      </div>
+    </section>
+
+    <section class="tableCard" id="tableArea">
+      <div class="tableHeader">
+        <div>
+          <h3 id="tableTitle">Male Clothing</h3>
+          <p>Item / Buy Item / Location</p>
+        </div>
+        <div class="count" id="visibleCount">0 results</div>
+      </div>
+
+      <div class="tableScroll" id="tableScroll">
+        <table id="dataTable">
+          <thead>
+            <tr>
+              <th style="width: 34%;">Item</th>
+              <th style="width: 33%;">Buy Item</th>
+              <th style="width: 33%;">Location</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+
+        <div class="unavailable" id="unavailable">
+          <div class="unavailableBox">
+            <img id="logo2" alt="FBI VRP Logo" />
+            <h3>غير متوفرة حاليا</h3>
+            <p>هذا القسم غير مضاف حاليا. تقدر تضيفه بعدين من نفس ملف HTML بسهولة.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      FBI VRP © 2025 — GenderSwap Unlocks
+    </div>
+  </div>
+
+  <script>
+    const LOGO_URL = "https://media.discordapp.net/attachments/1402874675419152384/1512818787890630777/image.png?ex=6a2579c9&is=6a242849&hm=476b365eeacc37fcb3df60151d279edca7c0656c4a297eca55a1f5ac7b2d5da6&=&format=webp&quality=lossless";
+    document.getElementById("logo1").src = LOGO_URL;
+    document.getElementById("logo2").src = LOGO_URL;
+
+    const RAW_MALE_CLOTHING = `
+Hats Next
+Glow Wrist Bands	Civilst White Fowards Cap	Hats -> Labels
+Glow Wrist Bands	Civilst Black Fowards Cap	Hats -> Labels
+Glow Wrist Bands	Civilst Orange Fowards Cap	Hats -> Labels
+White Bigness Ski	Magenta Wool Beanie	Hats -> Beanies
+Black Bigness Ski	Purple Wool Beanie	Hats -> Beanies
+White SC Coin Wraps	Lavender Wool Beanie	Hats -> Beanies
+Red SC Coin Wraps	Peach Wool Beanie	Hats -> Beanies
+Pink SC Coin Wraps	Lime Wool Beanie	Hats -> Beanies
+Lime SC Coin Wraps	Moss Wool Beanie	Hats -> Beanies
+Blue SC Coin Wraps	Emerald Wool Beanie	Hats -> Beanies
+Black SC Coin Wraps	Dark Green Wool Beanie	Hats -> Beanies
+Aqua Dazzle Sand Castle Wraps	Lilac Wool Beanie	Hats -> Beanies
+Gray Dazzle Sand Castle Wraps	Light Blue Wool Beanie	Hats -> Beanies
+Aqua Camo Sand Castle Wraps	Cyan Wool Beanie	Hats -> Beanies
+Gray Camo Sand Castle Wraps	Teal Wool Beanie	Hats -> Beanies
+Purple Lightning Wraps	Royal Blue Wool Beanie	Hats -> Beanies
+Pink Lightning Wraps	Blue Wool Beanie	Hats -> Beanies
+Orange Lightning Wraps	Lemon Wool Beanie	Hats -> Beanies
+Green Lightning Wraps	Amber Wool Beanie	Hats -> Beanies
+White Lightning Wraps	Orange Wool Beanie	Hats -> Beanies
+Blue Lightning Wraps	Scarlet Wool Beanie	Hats -> Beanies
+Moss Leopard Güffy Wraps	Hot Pink Wool Beanie	Hats -> Beanies
+Cyan Leopard Güffy Wraps	Burgundy Wool Beanie	Hats -> Beanies
+Magenta Leopard Güffy Wraps	Chocolate Wool Beanie	Hats -> Beanies
+Red Flames Wraps	Beige Wool Beanie	Hats -> Beanies
+Purple Flames Wraps	Ice Wool Beanie	Hats -> Beanies
+Pink Flames Wraps	Gray Wool Beanie	Hats -> Beanies
+Orange Flames Wraps	Dark Gray Wool Beanie	Hats -> Beanies
+Green Flames Wraps	Black Wool Beanie	Hats -> Beanies
+Grey Forward & Backward cap	Cream Unertaker  Hat	Hats -> Trilbies
+Black Forward & Backward cap	Terracotta Undertaker Hat	Hats -> Trilbies
+Yung Ancestor Forward & Backward Cap	Light Gray Undertaker Hat	Hats -> Trilbies
+Prison Authority Forward & Backward cap	Dusty Violet Undertaker Hat	Hats -> Trilbies
+Bugstars Forward & Backward cap	Dark Gray Undertaker Hat	Hats -> Trilbies
+Yellow Firefighter Hemmet & Googles	White Construction Helmet	Hats -> Helmets
+Blue Swirl Pajamas	Atomic Helmet	Hats -> Helmets
+White Graphic Pajamas	Tropic Helmet	Hats -> Helmets
+Red Swirl Motif Pajamas	Boost Helmet	Hats -> Helmets
+Blue Check Pajamas	Snakeskin Helmet	Hats -> Helmets
+Vibrant Check Pajamas	Digital Helmet	Hats -> Helmets
+Pastel Green Pajamas	Cubist Helmet	Hats -> Helmets
+Pastel Pink Pajamas	Cobble Helmet	Hats -> Helmets
+Pastel Yellow Pajamas	Death Helmet	Hats -> Helmets
+Pastel Blue Pajamas	Skeleton Helmet	Hats -> Helmets
+Red Swirl Pajamas	Silver JC Helmet	Hats -> Helmets
+Yellow Swirl Pajamas	Gold JC Helmet	Hats -> Helmets
+Purple Helmets Black Hoodie	Faggio Mod	Hats -> Biker Helmets
+Yellow Wireframe Bodysuit	Splinter Shielded Riot	Hats -> Riot Helmets
+Pink Wireframe Bodysuit	Light Woodland Shielded Riot	Hats -> Riot Helmets
+Blue Wireframe Bodysuit	Aqua Camo Shielded Riot	Hats -> Riot Helmets
+Orange Wireframe Bodysuit	Fall Shielded Riot	Hats -> Riot Helmets
+Green Wireframe Bodysuit	Blue Digital Shielded Riot	Hats -> Riot Helmets
+Yung Ancestor Hoodie	Purple Snakeskin Backwards cap	Hats -> Dimamond Casino Heist
+Yung Ancestor Jacket	Green Snakeskin Backwards cap	Hats -> Dimamond Casino Heist
+HO-HO-Ho  sweater	Green Neno camo backwards cap	Hats -> Dimamond Casino Heist
+Warehouse Tee	Teal Cap Backwards cap	Hats -> Dimamond Casino Heist
+Wonderama Tee	Red cap Backwards cap	Hats -> Dimamond Casino Heist
+Eight Bit Tee	Lightgrey Cap Backwards cap	Hats -> Dimamond Casino Heist
+Yellow HSW Racing Suit(NG)	White Pounders Forwards	Hats -> Designer Caps, Forward
+Red Geo HSW Racing Suit(NG)	Black Pounders Forwards	Hats -> Designer Caps, Forward
+Cool Noise HSW Racing Suit(NG)	Yellow VDG Forwards	Hats -> Designer Caps, Forward
+Bright Noise HSW Racing Suit(NG)	Black VDG Forwards	 Hats -> Designer Caps, Forward
+Cool Pixel HSW Racing Suit(NG)	Yellow Camo Trickster Forwards	Hats -> Designer Caps, Forward
+Vibrant Pixel HSW Racing Suit(NG)	Yellow Trickster Forwards	Hats -> Designer Caps, Forward
+Sunset Glitch HSW Racing Suit(NG)	Black Trickster Forwards	Hats -> Designer Caps, Forward
+CMYK Glitch HSW Racing Suit(NG)	Gray Broker Forwards	Hats -> Designer Caps, Forward
+The Drive	Gray Woodland Curved Backwards	Hats -> Designer Caps, Forward
+Black Bigness Wraps	Moss Trucker Forwards	Hats -> Trucker Caps, Forward
+Purple Bigness Wraps	Lime Trucker Forwards	Hats -> Trucker Caps, Forward
+White Bigness Wraps	Peach Trucker Forwards	Hats -> Trucker Caps, Forward
+Blue Galaxy Ablaze Tee	Lavender Trucker Forwards	Hats -> Trucker Caps, Forward
+Green Galaxy Ablaze Tee	Purple Trucker Forwards	Hats -> Trucker Caps, Forward
+Yellow Galaxy Ablaze Tee	Magenta Trucker Forwards	Hats -> Trucker Caps, Forward
+Tops Next
+Defender of the Faith Tee	Civilist White Dark Logo Tee	Tops -> Lables
+Warped Still Slipping Tee	Civilist Black Light Logo Tee	Tops -> Lables
+Retro Defender of the Faith Tee	Civilist Black Dark Logo Tee	Tops -> Lables
+Monkey's Paradise Tee	Civilist Orange Dark Logo Tee	Tops -> Lables
+R* Hat	One of the Lable Hoodies	Tops -> Lables
+Blue & Magenta Glow Shades	MISBHV x KM Vibrant Sweater	Tops -> Lables
+Purple & Yellow Glow Shades	MISBHV x KM Dark Sweater	Tops -> Lables
+Blue & Yellow Glow Shades	MISBHV x KM Bold Sweater	Tops -> Lables
+Pink & Yellow Glow Shades	MISBHV x KM Bright Sweater	Tops -> Lables
+Red & Yellow Glow Shades	MISBHV x KM Light Sweater	Tops -> Lables
+Ice Cold Spunk Festive Sweater	Blue Mercenary Vest	Tops -> Arean War Tops -> Apocalyptic
+Merry Spunkmas Festive Sweater	White Mercenary Vest	Tops -> Arean War Tops -> Apocalyptic
+Black & Red Bones Festive  Sweater	Black Mercenary Vest	Tops -> Arean War Tops -> Apocalyptic
+Black & Red Bones Festive Sweater	Green Mercenary Vest	Tops -> Arean War Tops -> Apocalyptic
+Race And Chase Start Tee	Teal Smooth Fitted	Tops -> Fitted Suit Jackets
+Race And Chase Signs Tee	Grey Smooth Fitted	Tops -> Fitted Suit Jackets
+Red Beat Off Earphones	Ox Blood Light Biker	Tops -> Biker Jackets
+Teal Beat Off Earphones	Ice Light Biker	Tops -> Biker Jackets
+Gray Beat Off Earphones	Ash Light Biker	Tops -> Biker Jackets
+Black Beat Off Earphones	Gray Light Biker	Tops -> Biker Jackets
+Blue Beat Off Earphones	Black Light Biker	Tops -> Biker Jackets
+Pink Script Slab Canvas	Light Blue Vinyl Cut	Tops -> Vinyl Cuts
+Cyan Leopard Güffy Canvas	Dark Nut Vinyl Cut	Tops -> Vinyl Cuts
+Magenta Leopard Güffy Canvas	Chestnut Vinyl Cut	Tops -> Vinyl Cuts
+Zebra Bigness Canvas	Orange Vinyl Cut	Tops -> Vinyl Cuts
+Pink S Slab Canvas	Light Blue Vinyl	Tops -> Vinyl Jackets
+Light Blue S Slab Canvas	Dark Nut Vinyl	Tops -> Vinyl Jackets
+Green S Slab Canvas	Chestnut Vinyl	Tops -> Vinyl Jackets
+Black S Slab Canvas	Orange Vinyl	Tops -> Vinyl Jackets
+Lime Leopard Slab Canvas	Red Vinyl	Tops -> Vinyl Jackets
+Blue Leopard Slab Canvas	Dark Green Vinyl	Tops -> Vinyl Jackets
+White Leopard Slab Canvas	Scarlet Vinyl	Tops -> Vinyl Jackets
+Black Camo Roses Slab Canvas	Ox Blood Vinyl	Tops -> Vinyl Jackets
+Camo Roses Slab Canvas	Ice Vinyl	Tops -> Vinyl Jackets
+Neon Script Slab Canvas	Ash Vinyl	Tops -> Vinyl Jackets
+Brown Script Slab Canvas	Gray Vinyl	Tops -> Vinyl Jackets
+Cyan Script Slab Canvas	Black Vinyl	Tops -> Vinyl Jackets
+Green Prolaps Flat Forwards	Ash Chore	Tops -> Work Jackets
+Navy Prolaps Flat Forwards	Ice Chore	Tops -> Work Jackets
+Blue Jock Cranley Suit	Blue Puffer Jacket	Tops -> Sports Jackets
+Principe Hoodie Black	Urban Patched Closed Parka	Tops -> Overcoats
+White Haggard Witch	Black Smoking Jacket	Tops -> Loungewear
+Gray Haggard Witch	Burgundy Smoking Jacket	Tops -> Loungewear
+Yellow Haggard Witch	Navy Smoking Jacket	Tops -> Loungewear
+Red Hypnotic Alien	Red Smoking Jacket	Tops -> Loungewear
+Green Hypnotic Alien	White Silk Pajamas	Tops -> Loungewear
+Blue Hypnotic Alien	Pink Silk Pajamas	Tops -> Loungewear
+Black Sack Slasher	Red Silk Pajamas	Tops -> Loungewear
+Bloody Sack Slasher	Gray Silk Pajamas	Tops -> Loungewear
+Classic Sack Slasher	Perseus Silk Pajamas	Tops -> Loungewear
+Black Classic Lucifer	SN Silk Pajamas	Tops -> Loungewear
+Orange Classic Lucifer	Black Silk Pajamas	Tops -> Loungewear
+Marlowe  T-Shirt	SecuroServ Sweater	Tops -> SecuroServ Tops
+Manopause T-Shirt	SecuroServ T-Shirt	Tops -> SecuroServ Tops
+Unicorn	White Sand Castle Torn  Tee	Tops -> T-Shirts
+R* Crosswalk Tee	UR Skull White Tee	Tops -> Biker T-Shirts
+Principe Black Tee	UR Embossed Tee	Tops -> Biker T-Shirts
+Purple Helmets Black Tee	UR Flames White Tee	Tops -> Biker T-Shirts
+Nagasaki White and Red Tee	Uptown Riders White Tee	Tops -> Biker T-Shirts
+Western Logo White Tee	UR Solid Tee	Tops -> Biker T-Shirts
+Western Logo Black Tee	UR Tee	Tops -> Biker T-Shirts
+Western Brand White Tee	Lost Ride Free White Tee	Tops -> Biker T-Shirts
+Crosswalk Tee	UR Skull Black Tee	Tops -> Biker T-Shirts
+Nagasaki Black Tee	UR Flames Black Tee	Tops -> Biker T-Shirts
+Nagasaki White Tee	Uptown Riders Black Tee	Tops -> Biker T-Shirts
+Western Brand Black Tee	Lost Ride Free Black Tee	Tops -> Biker T-Shirts
+Drone T-Shirt	Hinterland Brand T-Shirt	Tops -> Work T-Shirts
+Bahama Mamas	Hinterland Banner T-Shirt	Tops -> Work T-Shirts
+Accountant T-Shirt	Hinterland Scroll T-Shirt	Tops -> Work T-Shirts
+Tradeitional Painted Rabbit	Pink Chalk Revere Collar	Tops -> Party Shirts
+Twilight Painted Rabbit	Blue Fruit Revere Collar	Tops -> Party Shirts
+Noh Painted Rabbit	White Fruit Revere Collar	Tops -> Party Shirts
+White Spiked Gaunlet (R)(NG)	Blue Chalk Revere Collar	Tops -> Party Shirts
+White Spiked Gaunlet (L)(NG)	Blue Stripes Revere Collar	Tops -> Party Shirts
+Gold Beat Off Earphones(NG)	Red Stripes Revere Collar	Tops -> Party Shirts
+?(NG)	Teal Petals Revere Collar	Tops -> Party Shirts
+Borfmas Beer  Hat(NG)	Blue Petals Revere Collar	Tops -> Party Shirts
+Red Reindeer Beer Hat(NG)	White Bigness Revere Collar	Tops -> Party Shirts
+Blarneys Festive Beer Hat(NG)	Black Bigness Revere Collar	Tops -> Party Shirts
+Pisswasser Festive Beer Hat(NG)	Scarlet Pineapple Revere Collar	Tops -> Party Shirts
+Red Holly Beer Hat(NG)	Green Pineapple Revere Collar	Tops -> Party Shirts
+Blue Snowflake Beer Hat(NG)	Warm Sunset Revere Collar	Tops -> Party Shirts
+Red Snowflake Beer Hat(NG)	Cool Sunset Revere Collar	Tops -> Party Shirts
+Green Festive Beer Hat(NG)	Pink Palms Revere Collar	Tops -> Party Shirts
+Lemon Festive Beer Hat(NG)	Charcoal Palms Revere Collar	Tops -> Party Shirts
+Still Slipping Tie-dye Forward Cap(NG)	Red Floral Revere Collar	Tops -> Party Shirts
+Manor Geo Forward Cap(NG)	Charcoal Floral Revere Collar	Tops -> Party Shirts
+Apricot Perseus Forward Cap(NG)	Blush Palms Revere Collar	Tops -> Party Shirts
+?(NG)	Green Palms Revere Collar	Tops -> Party Shirts
+LS Smoking Jackert(NG)	Magenta Revere Collar	Tops -> Party Shirts
+Hand-Drawn Biker Bomber(NG)	Purple Revere Collar	Tops -> Party Shirts
+Have You Seen Me? Sweater (NG)	Lavender Revere Collar	Tops -> Party Shirts
+Still Slipping Tie-dye Tee(NG)	Peach Revere Collar	Tops -> Party Shirts
+Manor Geo Hoodie(NG)	Lime Revere Collar	Tops -> Party Shirts
+Pumpkin Hoodie(NG)	Moss Revere Collar	Tops -> Party Shirts
+Blue Emissive Lady Liberty(NG)	Blue Revere Collar	Tops -> Party Shirts
+Green Emissive Lady Liberty(NG)	Royal Blue Revere Collar	Tops -> Party Shirts
+President(NG)	Amber Revere Collar	Tops -> Party Shirts
+Pale Stitched(NG)	Orange Revere Collar	Tops -> Party Shirts
+Grimy Stitched(NG)	Scarlet Revere Collar	Tops -> Party Shirts
+Blushed Cracked Puppet(NG)	Hot Pink Revere Collar	Tops -> Party Shirts
+Gray Cracked Puppet(NG)	Burgundy Revere Collar	Tops -> Party Shirts
+Knuckleduster Pocket Tee	Khaki Service Shirt	Tops -> Service Shirts
+Red R* Class of '98	Brown Service Shirt	Tops -> Service Shirts
+Blue R* Class of '98	White Service Shirt	Tops -> Service Shirts
+Black Warstock Hoodie	Slate Service Shirt	Tops -> Service Shirts
+White Ammu-Nation Hoodie	Black Service Shirt	Tops -> Service Shirts
+Black Ammu-Nation Hoodie	Sand Service Shirt	Tops -> Service Shirts
+Black Coil Hoodie	Moss Service Shirt	Tops -> Service Shirts
+White Coil Hoodie	Light Woodland Service Shirt	Tops -> Service Shirts
+Black Vom Feuer Hoodie	Flecktarn Service Shirt	Tops -> Service Shirts
+White Vom Feuer Hoodie	Brushstroke Service Shirt	Tops -> Service Shirts
+Black Shrewsbury Hoodie	Peach Camo Service Shirt	Tops -> Service Shirts
+White Shrewsbury Hoodie	Cobble Service Shirt	Tops -> Service Shirts
+Black Hawk & Little Hoodie	Contrast Camo Service Shirt	Tops -> Service Shirts
+White Hawk & Little Hoodie	Splinter Service Shirt	Tops -> Service Shirts
+Warstock Cap	Aqua Camo Service Shirt	Tops -> Service Shirts
+Red Ammu-Nation Cap	Gray Woodland Service Shirt	Tops -> Service Shirts
+Black Ammu-Nation Cap	Moss Digital Service Shirt	Tops -> Service Shirts
+Black Coil Cap	Crosshatch Service Shirt	Tops -> Service Shirts
+Wine Coil Cap	Dark Woodland Service Shirt	Tops -> Service Shirts
+Black Vom Feuer Cap	Fall Service Shirt	Tops -> Service Shirts
+White Vom Feuer Cap	Peach Digital Service Shirt	Tops -> Service Shirts
+Black Shrewsbury Cap	Gray Digital Service Shirt	Tops -> Service Shirts
+White Shrewsbury Cap	Green Digital Service Shirt	Tops -> Service Shirts
+Black Hawk & Little Cap	Brown Digital Service Shirt	Tops -> Service Shirts
+Red Hawk & Little Cap	Blue Digital Service Shirt	Tops -> Service Shirts
+Abominable Snowman	Gray Stripe Open Check	Tops -> Work Shirts
+White Prolaps Flat Backwards	Purple  Pullover Hoodie	Tops -> Designer Hoodies
+Vibrant Heat Flat Backwards	Dark Purple Pullover Hoodie	Tops -> Designer Hoodies
+Vampires on the Beach	Green  Sweater	Tops -> Sweaters
+Vinewood Zombie (Twitch variant)	White Sweater	Tops -> Sweaters
+Zombie Liberals in the Midwest	Gray Sweater	Tops -> Sweaters
+Navy Prolaps Curved Backwards	Purple V Neck	Tops -> V-Neck  Sweaters
+Vibrant Heat Curved Backwards	Grape V Neck	Tops -> V-Neck Sweaters
+Black Enema Ugglies & Socks	Purple Lightning Cardigan	Tops -> Cardigans
+Cyan Enema Ugglies & Socks	Pink Lightning Cardigan	Tops -> Cardigans
+Magenta Enema Ugglies & Socks	Black SC Baroque Cardigan	Tops -> Cardigans
+Green Flames Ugglies & Socks	Magenta SC Baroque Cardigan	Tops -> Cardigans
+Orange Flames Ugglies & Socks	Pink SC Baroque Cardigan	Tops -> Cardigans
+Pink Flames Ugglies & Socks	Black VDG Cardigan	Tops -> Cardigans
+Purple Flames Ugglies & Socks	White VDG Cardigan	Tops -> Cardigans
+Red Flames Ugglies & Socks	Blue Fade VDG Cardigan	Tops -> Cardigans
+Green Big Flames Ugglies & Socks	Pink Fade VDG Cardigan	Tops -> Cardigans
+Lemon Sports Track Top	Dark Stone Sport Track Top	Tops -> Sport Tops
+Bounce FM T-Shirt	Illusion Top	Tops -> Off Shoulder Tops
+Flash FM Tee	Monkey Top	Tops -> Off Shoulder Tops
+Crocs Bar T-Shirt	Hero Top	Tops -> Off Shoulder Tops
+KJAH Radio T-Shirt	Sunglasses T-Shirt	Tops -> Off Shoulder Tops
+Base5 T-Shirt	Cat Top	Tops -> Off Shoulder Tops
+Vivisection T-Shirt	Stag Top	Tops -> Off Shoulder Tops
+K-DST T-Shirt	Cassette Top	Tops -> Off Shoulder Tops
+Homies Sharp T-Shirt	Bear Top	Tops -> Off Shoulder Tops
+Vinyl Countdown T-Shirt	Wild Cat Top	Tops -> Off Shoulder Tops
+Fever 105 T-Shirt	Chimp Top	Tops -> Off Shoulder Tops
+Emotion 98.3 T-Shirt	Oeuf Top	Tops -> Off Shoulder Tops
+BOBO T-Shirt	Pyramid Top	Tops -> Off Shoulder Tops
+Bitch'n' Dog Food Top	Scratch T-Shirt	Tops -> Off Shoulder Tops
+Blue WCC DJ Pooh Tee	Pink VDG Blose	Tops -> Blouses
+White WCC DJ Pooh Tee	Blue VDG Blose	Tops -> Blouses
+Orange DJ Pooh Tee	Yellow VDG Blose	Tops -> Blouses
+Red Festive Tee	Black Enema Tie-dye Blouse	Tops -> Blouses
+Festive TeeGreen	Teal Enema Tie-dye Blouse	Tops -> Blouses
+Gray Yeti Battle Pants(NG)	Purple Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Magenta Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	White DS Striped Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Pink DS Striped Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Lime DS Striped Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Yellow DS Striped Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Black Blagueurs Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	White Blagueurs Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Teal Floral Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Rose Floral Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Lime VDG Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Pink VDG Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Wine Red SD Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Yellow SD Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Blue Tris Perseus Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Orange Tris Perseus Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Red SN Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Lilac SN Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Dark Swirl Perseus Sun Dress	Tops -> Dresses
+Placeholder?(NG) ?	Bright Swirl Perseus Sun Dress	Tops -> Dresses
+Broker Checkerboard Cargos(NG)	Positive Cimicino Sun Dress	Tops -> Dresses
+Le Chien Whistle Necklace	Black Le Chien Mini Dress	Tops -> Dresses
+Heartbreak Pendant	Pink DS Climbing Mini Dress	Tops -> Dresses
+Pink Beat Off Earphones	Magenta Mini Dress	Tops -> Mini Dresses
+Purple Beat Off Earphones	Purple Mini Dress	Tops -> Mini Dresses
+Orange Beat Off Earphones	Lavender Mini Dress	Tops -> Mini Dresses
+Salmon Beat Off Earphones	Peach Mini Dress	Tops -> Mini Dresses
+Yellow Beat Off Earphones	Lime Mini Dress	Tops -> Mini Dresses
+White Beat Off Earphones	Moss Mini Dress	Tops -> Mini Dresses
+Red The Diamond Classic  Tee	Bigness Print Tee	Casino Store -> Tops ->  T-Shirts
+The Diamond Vintage Tee	Bigness Leopard Tee	Casino Store -> Tops -> T-Shirts
+Legs Next
+Yellow Holly Beer  Hat	Stonewash Turnups	Legs -> Jeans
+Green Reindeer Beer Hat	Standard Turnups	Legs -> Jeans
+Zebra Dome (NG)	Classic Turnups	Legs -> Jeans
+Purple Snakeskin Spiked (NG)	Dark Turnups	Legs -> Jeans
+Black Blagueurs Pool Sliders	Pink Jean Shorts	Legs -> Shorts
+Camo Bigness Pool Sliders	Peach Jean Shorts	Legs -> Shorts
+Purple Bigness Pool Sliders	Moss Jean Shorts	Legs -> Shorts
+Black Bigness Pool Sliders	Lavender Jean Shorts	Legs -> Shorts
+Lemon Sports Track Pants	Light Gray Large Cargos	Legs -> Cargo Pants
+Pink Dot Tech Mask	Black & Cream stripe Slacks	Legs -> Suit pants
+Blue Dot Tech Mask	Mengenta Slacks	Legs -> Suit pants
+Orange Dot Tech Mask	Pink Slacks	Legs -> Suit pants
+Green Dot Tech Mask	Red Slacks	Legs -> Suit pants
+Cliffford Hoodie	Lemon Denim Skirt	Legs -> Skirts
+The Diamond Strike Vest	Amber Denim Skirt	Legs -> Skirts
+Gray Camo Yeti Pool Sliders	Orange Denim Skirt	Legs -> Skirts
+Camo Yeti Pool Sliders	Burgundy Denim Skirt	Legs -> Skirts
+Blue SC Pattern Pool Sliders	Faded Black Denim Skirt	Legs -> Skirts
+Pink SC Pattern Pool Sliders	Faded Indigo Denim Skirt	Legs -> Skirts
+Black SC Pattern Pool Sliders	Faded Stonewash Denim Skirt	Legs -> Skirts
+White SC Coin Pool Sliders	Faded Classic Denim Skirt	Legs -> Skirts
+Black SC Coin Pool Sliders	Faded Standard Denim Skirt	Legs -> Skirts
+Neon Striped Pool Sliders	Faded Dark Denim Skirt	Legs -> Skirts
+Wild Striped Pool Sliders	Faded Dark Gray Denim Skirt	Legs -> Skirts
+Red ProLaps Pool Sliders	Faded Gray Denim Skirt	Legs -> Skirts
+Blue Heat Pool Sliders	Indigo Denim Skirt	Legs -> Skirts
+White Güffy Pool Sliders	Dark Denim Skirt	Legs -> Skirts
+Green Güffy Pool Sliders	Stonewash Denim Skirt	Legs -> Skirts
+Floral Güffy Pool Sliders	Light Denim Skirt	Legs -> Skirts
+Red DS Pool Sliders	Classic Denim Skirt	Legs -> Skirts
+Navy DS Pool Sliders	Standard Denim Skirt	Legs -> Skirts
+Rouge Cimicino Pool Sliders	Black Denim Skirt	Legs -> Skirts
+Gray Cimicino Pool Sliders	Dark Gray Denim Skirt	Legs -> Skirts
+Pink Blagueurs Pool Sliders	Gray Denim Skirt	Legs -> Skirts
+White Blagueurs Pool Sliders	Ash Denim Skirt	Legs -> Skirts
+Black undertaker hat	Forest Camo Guarded Cargos	Legs -> Utility Pants
+Gruppe Sechs Helmet	Splinter guarded Cargos	Legs -> Utility Pants
+Shoes Next
+Please Stop Me Hockey	Black Scruffy Boots	Shoes -> Boots
+Blue SC Dragon Revere Collar	Teal Low Canvas	Shoes -> Canvas Shoes
+Red SC Dragon Revere Collar	Cyan Low Canvas	Shoes -> Canvas Shoes
+Zebra Bigness Forwards	Lime Low Canvas	Shoes -> Canvas Shoes
+Pink Zebra Bigness Forwards	Peach Low Canvas	Shoes -> Canvas Shoes
+Magenta Leopard Güffy Forwards	Lavender Low Canvas	Shoes -> Canvas Shoes
+Cyan Leopard Güffy Forwards	Purple Low Canvas	Shoes -> Canvas Shoes
+Moss Leopard Güffy Forwards	Magenta Low Canvas	Shoes -> Canvas Shoes
+Glow Believe Forwards	Lilac Squares Flip-Flops	Shoes -> Flip-Flops
+Black Believe Forwards Cap	Yellow Rectangles Flip-Flops	Shoes -> Flip-Flops
+Gray Believe Forwards Cap	Green Rectangles Flip-Flops	Shoes -> Flip-Flops
+Black LD Organics Backwards Cap	Black Borrachas Flip-Flops	Shoes -> Flip-Flops
+Pacific Standard Sweater	White Borrachas Flip-Flops	Shoes -> Flip-Flops
+The Diamond Casino Varsity	Red Striped Flip-Flops	Shoes -> Flip-Flops
+Pacific Standard Varsity	Blue Striped Flip-Flops	Shoes -> Flip-Flops
+Cliffford Varsity	Vibrant Stripes Flip-Flops	Shoes -> Flip-Flops
+Sinsimito Cuban Shirt	Vivid Stripes Flip-Flops	Shoes -> Flip-Flops
+Pumpkin Tee	Red Floral Flip-Flops	Shoes -> Flip-Flops
+Black Bearded Lucifer	Red Sparkle Rounded Heels	Shoes -> High Heels
+Orange Bearded Lucifer	Leopard Rounded Heels	Shoes -> High Heels
+Red Bearded Lucifer	Cream Rounded Heels	Shoes -> High Heels
+Nice Cap / Nice Flipped Cap	Brown Sneaker Boots	Shoes -> High Heeled Sneakers
+Naughty Cap / Naughty Flipped Cap	Green Sneaker Boots	Shoes -> High Heeled Sneakers
+Davis Fitted Cap	Red Sneaker Wedges	Shoes -> High Heeled Sneakers
+Black SA Fitted Cap	White Sneaker Wedges	Shoes -> High Heeled Sneakers
+Strawberry Fitted Cap	Gray Sneaker Wedges	Shoes -> High Heeled Sneakers
+Eastside Fitted Cap	Black Sneaker Wedges	Shoes -> High Heeled Sneakers
+Westside Fitted Cap	Yellow Sneaker Wedges	Shoes -> High Heeled Sneakers
+Heinous Krampus	Grayscale Rubberized	Shoes -> Rubberized Boots
+Odious Krampus	Gray & Red Rubberized	Shoes -> Rubberized Boots
+Fearsome Krampus	Mono Rubberized	Shoes -> Rubberized Boots
+Hideous Krampus	Earth Tones Rubberized	Shoes -> Rubberized Boots
+Black VDG Bandana Wide	Teal Ugglies & Socks	Shoes -> Uggiles
+Downtown Cab Co. Revere Collar	Dark Green Ugglies & Socks	Shoes -> Uggiles
+Black Blagueurs Revere Collar	Emerald Ugglies & Socks	Shoes -> Uggiles
+Blue Blagueurs Revere Collar	Moss Ugglies & Socks	Shoes -> Uggiles
+Red Blagueurs Revere Collar	Lime Ugglies & Socks	Shoes -> Uggiles
+White Blagueurs Revere Collar	Peach Ugglies & Socks	Shoes -> Uggiles
+Green Flames Revere Collar	Lavender Ugglies & Socks	Shoes -> Uggiles
+Orange Flames Revere Collar	Purple Ugglies & Socks	Shoes -> Uggiles
+Pink Flames Revere Collar	Magenta Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Black Enema Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Cyan Enema Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Magenta Enema Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Green Flames Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Orange Flames Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Pink Flames Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Purple Flames Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Red Flames Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Green Big Flames Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Orange Big Flames Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Purple Big Flames Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Red Big Flames Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Blue Lightning Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Green Lightning Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Orange Lightning Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Purple Lightning Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Pink Lightning Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Blue Big Lightning Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Green Big Lightning Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Orange Big Lightning Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Purple Big Lightning Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Blue Marble Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	White Marble Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Gray Marble Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Chocolate Marble Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Black SC Baroque Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Blue SC Baroque Ugglies & Socks	Shoes -> Uggiles
+Next DLC Item	Pink SC Baroque Ugglies & Socks	Shoes -> Uggiles
+Accessories Next
+420 Smoking Pants	Gold Pearl Necklace	Accessories -> Necklaces
+Captin  Outfit	Brown Armored	Accessories -> Gloves
+Alian Outfit	Red & Grey Armored	Accessories -> Gloves
+Love Professor Secrets  Tee	Ash Armored	Accessories -> Gloves
+Love Professor Nemesis Tee	Gray Armored	Accessories -> Gloves
+Love Professor Friendzoned Tee	Black Armored	Accessories -> Gloves
+Contrast Dazzle Sand Castle Ski	Silver Beaded Bracelet	Accessories -> Cuffs
+Gray Camo Yeti Ski	Mono Beaded Bracelet	Accessories -> Cuffs
+Camo Yeti Ski	Gold Beaded Bracelet	Accessories -> Cuffs
+Pink Camo Yeti Ski	Rose Beaded Bracelet	Accessories -> Cuffs
+The Gooch	Copper Beaded Bracelet	Accessories -> Cuffs
+Zebra Bigness Wide	Ox Blood Woven Bracelet	Accessories -> Cuffs
+Pink Zebra Bigness Wide	Crimson Woven Bracelet	Accessories -> Cuffs
+Black Blagueurs Wide	Green Woven Bracelet	Accessories -> Cuffs
+Blue Blagueurs Wide	Red Woven Bracelet	Accessories -> Cuffs
+Red Blagueurs Wide	Orange Woven Bracelet	Accessories -> Cuffs
+White Blagueurs Wide	Mustard Woven Bracelet	Accessories -> Cuffs
+Green Flames Wide	Chestnut Woven Bracelet	Accessories -> Cuffs
+Orange Flames Wide	Dark Nut Woven Bracelet	Accessories -> Cuffs
+Pink Flames Wide	Blue Woven Bracelet	Accessories -> Cuffs
+Purple Flames Wide	Light Blue Woven Bracelet	Accessories -> Cuffs
+Dark Blue Vinyl	Rose Encrusted Bracelet	Accessories -> Cuffs
+Nemesis Tee	Silver Round Bracelet	Accessories -> Cuffs
+Nemesis Stained Tee	Rose Round Bracelet	Accessories -> Cuffs
+Valentines Blazer	Gold Round Bracelet	Accessories -> Cuffs
+Dark Logger Festive	Silver Round Bracelet	Accessories -> Cuffs
+White Logger Festive	Rose Round Bracelet	Accessories -> Cuffs
+Green Logger Festive	Gold Square Jewel Chain	Accessories -> Cuffs
+Red Logger Festive	Silver Square Jewel Chain	Accessories -> Cuffs
+Blue Patriot Logo Festive	Rose Square Jewel Chain	Accessories -> Cuffs
+Black Patriot Logo Festive	Gold Meander Bracelet	Accessories -> Cuffs
+Blue Patriot Festive	Silver Meander Bracelet	Accessories -> Cuffs
+Red Patriot Festive	Rose Meander Bracelet	Accessories -> Cuffs
+Desk Next
+Magnetics Script Fitted Cap	The Siren	Desk -> Valentines Underwear
+Magnetics Block Fitted Cap	The Glamour	Desk -> Valentines Underwear
+Low Santos Fitted Cap	The Concubine	Desk -> Valentines Underwear
+Boars Fitted Cap	The Azure	Desk -> Valentines Underwear
+Benny's Fitted Cap	The Femme	Desk -> Valentines Underwear
+Red Check Pajamas	The Heights	Desk -> Lowrider Classics
+Green Check Pajamas	The Stretch	Desk -> Lowrider Classics
+Black Check Pajamas	The Tuck	Desk -> Lowrider Classics
+Steel Horse Black Hoodie	The Chimera	Desk -> Biker
+Steel Horse White Hoodie	The Nightblade	Desk -> Biker
+Western Black Hoodie	The Hakuchou	Desk -> Biker
+Western White Hoodie	The Blazer	Desk -> Biker
+Nagasaki White Hoodie	The Manchez	Desk -> Biker
+Nagasaki White and Red Hoodie	The Faggio	Desk -> Biker
+Nagasaki Black Hoodie	The Zombie	Desk -> Biker
+Yellow Reindeer Lights Bodysuit	Yellow Robot Bodysuit	Desk -> ArenaWar -> Bodysuit
+Traditional Festive Lights Bodysuit	Blue Robot Bodysuit	Desk -> ArenaWar -> Bodysuit
+Green Reindeer Lights Bodysuit	Blue Hero Bodysuit	Desk -> ArenaWar -> Bodysuit
+Neon Festive Lights Bodysuit	Red Hero Bodysuit	Desk -> ArenaWar -> Bodysuit
+Bigness Tie-dye Sports pants	The Agitator	Desk -> The Cayo Perico Heist -> Guerilla
+Broker Prolaps Basketball Shorts	The Spector	Desk -> The Cayo Perico Heist -> Night Ops
+Panic Prolaps Basketball Shorts	The Culprit	Desk -> The Cayo Perico Heist -> Night Ops
+Exsorbep 720 Sports Shorts	The Sleuth	Desk -> The Cayo Perico Heist -> Night Ops
+Open Wheel Sponsor Tee	The Deflector	Desk -> The Cayo Perico Heist -> Night Ops
+Gusset Frog Tee	The Python	Desk -> The Cayo Perico Heist -> Jungle Camo
+Rockstar Yellow Pattern Tee	The Jaguar	Desk -> The Cayo Perico Heist -> Jungle Camo
+Rockstar Grey Pattern Tee	The Caiman	Desk -> The Cayo Perico Heist -> Jungle Camo
+Manor Tie-dye Tee	The Anaconda	Desk -> The Cayo Perico Heist -> Jungle Camo
+Glasses Next
+Blue Lightning Ugglies	Black Bigness Wraps	Glasses -> Casual Glasses
+Green Lightning Ugglies	Purple Bigness Wraps	Glasses -> Casual Glasses
+Orange Lightning Ugglies	White Bigness Wraps	Glasses -> Casual Glasses
+Purple Lightning Ugglies	Zebra Bigness Wraps	Glasses -> Casual Glasses
+Pink Lightning Ugglies	Pink Zebra Bigness Wraps	Glasses -> Casual Glasses
+Blue Big Lightning Ugglies	Blue DS Wraps	Glasses -> Casual Glasses
+Green Big Lightning Ugglies	Green Flames Wraps	Glasses -> Casual Glasses
+Orange Big Lightning Ugglies	Orange Flames Wraps	Glasses -> Casual Glasses
+Purple Big Lightning Ugglies	Pink Flames Wraps	Glasses -> Casual Glasses
+Blue Marble Ugglies	Purple Flames Wraps	Glasses -> Casual Glasses
+White Marble Ugglies	Red Flames Wraps	Glasses -> Casual Glasses
+Gray Marble Ugglies	Magenta Leopard Güffy Wraps	Glasses -> Casual Glasses
+Chocolate Marble Ugglies	Cyan Leopard Güffy Wraps	Glasses -> Casual Glasses
+Black SC Baroque Ugglies	Moss Leopard Güffy Wraps	Glasses -> Casual Glasses
+Blue SC Baroque Ugglies	Blue Lightning Wraps	Glasses -> Casual Glasses
+Pink SC Baroque Ugglies	White Lightning Wraps	Glasses -> Casual Glasses
+Black Blagueurs Ugglies & Socks	Green Lightning Wraps	Glasses -> Casual Glasses
+Blue Blagueurs Ugglies & Socks	Orange Lightning Wraps	Glasses -> Casual Glasses
+Red Blagueurs Ugglies & Socks	Purple Lightning Wraps	Glasses -> Casual Glasses
+White Blagueurs Ugglies & Socks	Pink Lightning Wraps	Glasses -> Casual Glasses
+Blue DS Ugglies & Socks	Gray Camo Sand Castle Wraps	Glasses -> Casual Glasses
+Blue DS Tiger Ugglies & Socks	Aqua Camo Sand Castle Wraps	Glasses -> Casual Glasses
+White Signs Squash Ugglies & Socks	Gray Dazzle Sand Castle Wraps	Glasses -> Casual Glasses
+Cluckin' Bell Ugglies & Socks	Aqua Dazzle Sand Castle Wraps	Glasses -> Casual Glasses
+?	Black SC Coin Wraps	Glasses -> Casual Glasses
+?	Blue SC Coin Wraps	Glasses -> Casual Glasses
+White Blagueurs Ski	Black Cat Eye Shades	Glasses -> Casual Glasses
+Black Enema Flourish Ski	White Cat Eye Shades	Glasses -> Casual Glasses
+Teal Enema Flourish Ski	Magenta Cat Eye Shades	Glasses -> Casual Glasses
+Magenta Enema Flourish Ski	Red Cat Eye Shades	Glasses -> Casual Glasses
+Green Flames Ski	Orange Cat Eye Shades	Glasses -> Casual Glasses
+Orange Flames Ski	Mustard Cat Eye Shades	Glasses -> Casual Glasses
+Pink Flames Ski	Lemon Cat Eye Shades	Glasses -> Casual Glasses
+Purple Flames Ski	Blue Cat Eye Shades	Glasses -> Casual Glasses
+Red Flames Ski	Cyan Cat Eye Shades	Glasses -> Casual Glasses
+Blue Lightning Ski	Green Cat Eye Shades	Glasses -> Casual Glasses
+White Lightning Ski	Lime Cat Eye Shades	Glasses -> Casual Glasses
+Green Lightning Ski	Lavender Cat Eye Shades	Glasses -> Casual Glasses
+Orange Lightning Ski	Purple Cat Eye Shades	Glasses -> Casual Glasses
+Purple Lightning Ski	Tortoiseshell Cat Eye Shades	Glasses -> Casual Glasses
+Pink Lightning Ski	Orange Tint Cat Eye Shades	Glasses -> Casual Glasses
+Gray Camo Sand Castle Ski	Blue Tint Cat Eye Shades	Glasses -> Casual Glasses
+Orange HSW Racing Suit(NG)	Black Round	Glasses -> Designer Glasses
+Blue Trip HSW Racing Suit(NG)	Silver Round	Glasses -> Designer Glasses
+Bold Shock HSW Racing Suit(NG)	Gold Round	Glasses -> Designer Glasses
+Vibran Shock HSW Racing Suit(NG)	Rose Round	Glasses -> Designer Glasses
+Vivd Torn HSW Racing Suit(NG)	Tortoiseshell Round	Glasses -> Designer Glasses
+Neon Torn HSW Racing Suit(NG)	Gold Framed Round	Glasses -> Designer Glasses
+Warn Warped HSW Racing Suit(NG)	Blue Framed Round	Glasses -> Designer Glasses
+Wild Warped HSW Racing Suit(NG)	Tortoiseshell & Silver Round	Glasses -> Designer Glasses
+Mummy(NG)	Black Square	Glasses -> Designer Glasses
+Black & White Tech Demon	Tiger Ergonomic	Glasses -> Designer Glasses
+Carbon Teal Tech Demon	Pink Ergonomic	Glasses -> Designer Glasses
+Carbon Tech Demon	Blue Ergonomic	Glasses -> Designer Glasses
+White & Red Tech Demon	Gold & Black Ergonomic	Glasses -> Designer Glasses
+Black & Green Tech Demon	Red Ergonomic	Glasses -> Designer Glasses
+Pink Floral Tech Demon	Teal Ergonomic	Glasses -> Designer Glasses
+Green & Yellow Tech Demon	Dark Tortoiseshell Ergonomic	Glasses -> Designer Glasses
+Orange & Cream Tech Demon	Green Ergonomic	Glasses -> Designer Glasses
+Gold Tech Demon	Tortoiseshell Ergonomic	Glasses -> Designer Glasses
+Brown Digital Tech Demon	Gold Ergonomic	Glasses -> Designer Glasses
+Aqua Camo Tech Demon	Silver Ergonomic	Glasses -> Designer Glasses
+Camo Tech Demon	Black Ergonomic	Glasses -> Designer Glasses
+Red Tech Demon	Dark Tortoiseshell Rectangular	Glasses -> Designer Glasses
+Orange & Gray Tech Demon	Red Fade Rectangular	Glasses -> Designer Glasses
+Pink Detail Tech Demon	Green Rectangular	Glasses -> Designer Glasses
+Green Detail Tech Demon	Yellow Rectangular	Glasses -> Designer Glasses
+Yellow Detail Tech Demon	Teal Fade Rectangular	Glasses -> Designer Glasses
+Blue Detail Tech Demon	Gray & Red Rectangular	Glasses -> Designer Glasses
+Red Detail Tech Demon	Blue Rectangular	Glasses -> Designer Glasses
+Pink Tech Demon	Claret Tortoiseshell Rectangular	Glasses -> Designer Glasses
+Purple Tech Demon	Light Tortoiseshell Rectangular	Glasses -> Designer Glasses
+Orange Tech Demon	Gold Rectangular	Glasses -> Designer Glasses
+Green Tech Demon	Silver Rectangular	Glasses -> Designer Glasses
+White Tech Demon	Black Rectangular	Glasses -> Designer Glasses
+Gray Tech Demon	Gold Tortoiseshell Cat Eye	Glasses -> Designer Glasses
+Black Tech Demon	Pink & Black Cat Eye	Glasses -> Designer Glasses
+Gray Vintage Frank	Navy Cat Eye	Glasses -> Designer Glasses
+Brown Vintage Frank	Gold & Black Cat Eye	Glasses -> Designer Glasses
+Green Vintage Frank	Black & Red Cat Eye	Glasses -> Designer Glasses
+Conquest	Black & Teal Cat Eye	Glasses -> Designer Glasses
+Horror Pumpkin	Dark Tortoiseshell Cat Eye	Glasses -> Designer Glasses
+Weathered Vintage Mummy	Black & Green Cat Eye	Glasses -> Designer Glasses
+Green Vintage Mummy	Tortoiseshell Cat Eye	Glasses -> Designer Glasses
+Pale Vintage Mummy	Gold Cat Eye	Glasses -> Designer Glasses
+Ornate Painted Tiger	Silver Cat Eye	Glasses -> Designer Glasses
+Gold Painted Tiger	Black Cat Eye	Glasses -> Designer Glasses
+Gray Painted Tiger	Pink & Black Square	Glasses -> Designer Glasses
+Painted Tiger	Tortoiseshell Square	Glasses -> Designer Glasses
+Death	Gray Tortoiseshell Square	Glasses -> Designer Glasses
+War	Gold & Tortoiseshell Square	Glasses -> Designer Glasses
+Light Green Vintage Vampire	Tortoiseshell & Brown Square	Glasses -> Designer Glasses
+Dark Green Vintage Vampire	Black & Blue Square	Glasses -> Designer Glasses
+White Vintage Vampire	Black & Brown Square	Glasses -> Designer Glasses
+Famine	Black & Red Square	Glasses -> Designer Glasses
+Sasquatch	Gold Square	Glasses -> Designer Glasses
+Masks Next
+Love professor HER  Tee	Smoke Hyena Mask	Masks -> Animals
+Love Professor HIS  tee	Stone Hyena Mask	Masks -> Animals
+Prison Guard (The exacting)	Gray Hyena Mask	Masks -> Animals
+Prison Guard (The Austere)	Brown Hyena Mask	Masks -> Animals
+Balaclava Crook (The pilferer)	Gray Mouse Mask	Masks -> Animals
+Balaclava Crook (The Lifter)	Tan Mouse Mask	Masks -> Animals
+Balaclava Crook (the slinker)	Brown Mouse Mask	Masks -> Animals
+Balaclava Crook (The creeper)	White Mouse Mask	Masks -> Animals
+Balaclava Crook (The sneaker)	Swamp Turtle Mask	Masks -> Animals
+The Fire Fighter (The Unwavering)	Moss Turtle Mask	Masks -> Animals
+The Fire Fighter (The Steady)	Brown Turtle Mask	Masks -> Animals
+The Fire Fighter (The Valiant)	Green Turtle Mask	Masks -> Animals
+Epsilon	Red Cross Death Bird	Masks -> Arena War
+Stocking	Dirty Knit Balaclava	Masks -> Balaclavas
+High Roller  Outfit	Geo Gray Dog	Masks -> Diamond Casino Heist
+Invade and Persuade Suck Tee	Geo Brown Dog	Masks -> Diamond Casino Heist
+Invade and Persuade Invader Tee	Geo White Dog	Masks -> Diamond Casino Heist
+Invade and Persuade Boxart Tee	Geo Gold Dog	Masks -> Diamond Casino Heist
+Mission III Tee	Gold Mask Respirator	Masks -> Diamond Casino Heist
+Mission IV Tee	Orange Mask Respirator	Masks -> Diamond Casino Heist
+Mission II Tee	Green Visor Respirator	Masks -> Diamond Casino Heist
+Invade and Persuade Tour Tee	White Leather Half Face	Masks -> Diamond Casino Heist
+Claim What's Yours Tee	Dusty Blue Leather Half Face	Masks -> Diamond Casino Heist
+Street Crimes Logo Tee	Terracotta Leather Half Face	Masks -> Diamond Casino Heist
+Street Crimes Yokles Tee	Light Pink Leather Half Face	Masks -> Diamond Casino Heist
+Street Crimes Punks Tee	Purple Leather Half Face	Masks -> Diamond Casino Heist
+Street Crimes Hoods Tee	Peach Leather Half Face	Masks -> Diamond Casino Heist
+Street Crimes Biker Tee	Green Leather Half Face	Masks -> Diamond Casino Heist
+Street Crimes Action Tee	Dark Pink Leather Half Face	Masks -> Diamond Casino Heist
+Street Crime Boxart Tee	Cyan Leather Half Face	Masks -> Diamond Casino Heist
+T-Shirt ( Black )	Red Leather Half Face	Masks -> Diamond Casino Heist
+T-Shirt ( Orange )	Smoke Leather Half Face	Masks -> Diamond Casino Heist
+Black Street Crimes Icons Tee	Red Lip Leather Half Face	Masks -> Diamond Casino Heist
+White Street Crimes Icons Tee	Pale Leather Half Face	Masks -> Diamond Casino Heist
+Street Crime Red Gangs Tee	Yellow Swirl Leather Half Face	Masks -> Diamond Casino Heist
+Invader and Persuade Barrles Tee	Red Swirl Leather Half Face	Masks -> Diamond Casino Heist
+Invader and Persuade Green Tee	Black Swirl Leather Half Face	Masks -> Diamond Casino Heist
+Street Crime Colour Gangs Tee	Worn Green Leather Half Face	Masks -> Diamond Casino Heist
+Invader and Persuade Hero Tee	Worn Yellow Leather Half Face	Masks -> Diamond Casino Heist
+Invader and Persuade Oil Tee	Worn Red Leather Half Face	Masks -> Diamond Casino Heist
+Invader and Persuade Gold Tee	Grey & White Leather Half Face	Masks -> Diamond Casino Heist
+The Soaring Eagle	Mime Plastic Face	Masks -> Characters
+The Old Glory	Puppet Plastic Face	Masks -> Characters
+The Stripes	Doll Plastic Face	Masks -> Characters
+The Spangled	Mannequin Plastic Face	Masks -> Characters
+The Stars	Brown Plastic Face	Masks -> Characters
+Supa Wet Beer Hat	Black Plastic Face	Masks -> Characters
+Blarneys Beer Hat	Clown Plastic Face	Masks -> Characters
+Patriot Beer Hat	Pink Plastic Face	Masks -> Characters
+J Lager Beer Hat	The Don Plastic Face	Masks -> Characters
+Benedict Beer Hat	Green Plastic Face	Masks -> Characters
+White & Gold Knit Sneakers	Dark Spiked Skull	Masks -> Monsters
+Orange Knit Sneakers	Mossy Spiked Skull	Masks -> Monsters
+Gray & Yellow Knit Sneakers	Fleshy Spiked Skull	Masks -> Monsters
+Grey & Mangenta Knit Sneakers	Plain Spiked Skull	Masks -> Monsters
+Gray & Purple Knit Sneakers	Yellow Stitched Wire	Masks -> Monsters
+Teal Knit Sneakers	White Stitched Wire	Masks -> Monsters
+Black & Lime Knit Sneakers	Red Stitched Wire	Masks -> Monsters
+Gray & Aqua Knit Sneakers	Orange Stitched Wire	Masks -> Monsters
+Gray & Cyan Knit Sneakers	Weathered Horned Skull	Masks -> Monsters
+Grayscale Knit Sneakers	Ages Horned Skull	Masks -> Monsters
+Beige Knit Sneakers	Dark Horned Skull	Masks -> Monsters
+Purple Fade Knit Sneakers	Clear Horned Skull	Masks -> Monsters
+Pisswasser Beer  Hat	Burger Shot Paper Bag	Masks -> Paper Bags
+USA Boppers	Shy Paper Bag	Masks -> Paper Bags
+USA Crown	Mouth Paper Bag	Masks -> Paper Bags
+Patriotic Beanie	Fat Cat Paper Bag	Masks -> Paper Bags
+Blue Top Foam Hat	Happy Paper Bag	Masks -> Paper Bags
+Red Top Foam Hat	Sad Paper Bag	Masks -> Paper Bags
+USA Top Hat	Manic Paper Bag	Masks -> Paper Bags
+USA Bucket Hat	Up-n-Atom Paper Bag	Masks -> Paper Bags
+Prison Guard (The No nonesense)	Pink Grin Tech Mask	Masks -> Sports
+Prison Guard (The Steadfast)	Blue Grin Tech Mask	Masks -> Sports
+Valet  Outfit	Orange Grin Tech Mask	Masks -> Sports
+High End Crook (The Offhand)	Green Grin Tech Mask	Masks -> Sports
+High End Crook (The Smooth)	Pink T Tech Mask	Masks -> Sports
+High End Crook (The Routine)	Blue T Tech Mask	Masks -> Sports
+High End Crook (The No-Frills)	Orange T Tech Mask	Masks -> Sports
+High End Crook (The Untraceable)	Green T Tech Mask	Masks -> Sports
+Classic Crook (the suspect)	Black & Pink Tech Mask	Masks -> Sports
+Classic Crook (The Underhand)	Black & Blue Tech Mask	Masks -> Sports
+Classic Crook (The shady)	Black & Orange Tech Mask	Masks -> Sports
+Balaclava Crook (The Skulker)	Black & Green Tech Mask	Masks -> Sports
+Santo Capra Patterns  Sweater	Yellow Grin Painted	Masks -> Tactical
+Rockstar Studio Colours Sweater	Red Grin Painted	Masks -> Tactical
+Bigness Jackal Sweater	Green Grin Painted	Masks -> Tactical
+Bigness Tie-dye Sweater	Palm Print Painted	Masks -> Tactical
+Bigness Faces Sweater	Island Painted	Masks -> Tactical
+Panic Prolaps Basketball top	Blue Flames Pained	Masks -> Tactical
+Broker Prolaps Basketball top	Red Flames Pained	Masks -> Tactical
+Rockstar Rolling Tee	Blue Grotesque Painted	Masks -> Tactical
+Manor PRBG Tee	Brown Grotesque Painted	Masks -> Tactical
+Impotent Rage Outfit	Pineapple Mask	Masks -> Casino
+Epsilon Medallion	Grapes Mask	Masks -> Casino
+    `;
+
+    const state = {
+      gender: "male",
+      type: "clothing",
+      search: ""
+    };
+
+    const rows = parseRows(RAW_MALE_CLOTHING);
+
+    const table = document.getElementById("dataTable");
+    const tableBody = document.getElementById("tableBody");
+    const unavailable = document.getElementById("unavailable");
+    const searchInput = document.getElementById("searchInput");
+
+    function parseRows(raw) {
+      return raw
+        .split("\n")
+        .map(line => line.trim())
+        .filter(Boolean)
+        .map(line => {
+          const parts = line.split("\t").map(x => x.trim());
+
+          if (parts.length < 3) {
+            return {
+              section: line
+            };
+          }
+
+          return {
+            item: parts[0],
+            buy: parts[1],
+            location: parts.slice(2).join(" ").trim()
+          };
+        });
+    }
+
+    function escapeHTML(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function isAvailable() {
+      return state.gender === "male" && state.type === "clothing";
+    }
+
+    function getFilteredRows() {
+      if (!state.search.trim()) return rows;
+
+      const q = state.search.toLowerCase().trim();
+
+      return rows.filter(row => {
+        if (row.section) {
+          return row.section.toLowerCase().includes(q);
+        }
+
+        return `${row.item} ${row.buy} ${row.location}`.toLowerCase().includes(q);
+      });
+    }
+
+    function render() {
+      updateTabs();
+
+      const available = isAvailable();
+
+      table.style.display = available ? "table" : "none";
+      unavailable.classList.toggle("show", !available);
+
+      document.getElementById("tableTitle").textContent =
+        `${capitalize(state.gender)} ${capitalize(state.type)}`;
+
+      if (!available) {
+        document.getElementById("visibleCount").textContent = "غير متوفرة حاليا";
+        document.getElementById("visibleCountTop").textContent = "0";
+        return;
+      }
+
+      const filtered = getFilteredRows();
+
+      tableBody.innerHTML = filtered.map(row => {
+        if (row.section) {
+          return `
+            <tr class="sectionRow">
+              <td colspan="3"><span>${escapeHTML(row.section)}</span></td>
+            </tr>
+          `;
+        }
+
+        return `
+          <tr>
+            <td>${escapeHTML(row.item)}</td>
+            <td>${escapeHTML(row.buy)}</td>
+            <td>${escapeHTML(row.location)}</td>
+          </tr>
+        `;
+      }).join("");
+
+      const normalRows = rows.filter(row => !row.section).length;
+      const visibleRows = filtered.filter(row => !row.section).length;
+      const sections = rows.filter(row => row.section).length;
+
+      document.getElementById("totalCount").textContent = normalRows;
+      document.getElementById("visibleCountTop").textContent = visibleRows;
+      document.getElementById("sectionCount").textContent = sections;
+      document.getElementById("visibleCount").textContent = `${visibleRows} results`;
+    }
+
+    function updateTabs() {
+      document.querySelectorAll("[data-gender]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.gender === state.gender);
+      });
+
+      document.querySelectorAll("[data-type]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.type === state.type);
+      });
+    }
+
+    function capitalize(value) {
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+
+    document.querySelectorAll("[data-gender]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        state.gender = btn.dataset.gender;
+        render();
+      });
+    });
+
+    document.querySelectorAll("[data-type]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        state.type = btn.dataset.type;
+        render();
+      });
+    });
+
+    searchInput.addEventListener("input", e => {
+      state.search = e.target.value;
+      render();
+    });
+
+    document.getElementById("clearBtn").addEventListener("click", () => {
+      state.search = "";
+      searchInput.value = "";
+      render();
+    });
+
+    function scrollToTable() {
+      document.getElementById("tableArea").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
+    render();
+  </script>
+</body>
+</html>
