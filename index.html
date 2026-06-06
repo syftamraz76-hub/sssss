@@ -391,7 +391,7 @@
       background:
         linear-gradient(180deg, rgba(6, 18, 21, 0.94), rgba(1, 7, 9, 0.96));
       box-shadow: var(--shadow);
-      overflow: hidden;
+      overflow: visible;
     }
 
     .tableHeader {
@@ -402,6 +402,7 @@
       padding: 18px;
       border-bottom: 1px solid var(--line);
       background: rgba(141, 248, 242, 0.055);
+      border-radius: 26px 26px 0 0;
     }
 
     .tableHeader h3 {
@@ -431,8 +432,10 @@
     }
 
     .tableScroll {
-      max-height: 720px;
-      overflow: auto;
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: visible;
+      max-height: none;
     }
 
     table {
@@ -448,8 +451,8 @@
 
     thead th {
       position: sticky;
-      top: 0;
-      z-index: 3;
+      top: 105px;
+      z-index: 10;
       padding: 15px 16px;
       background: rgba(1, 9, 11, 0.98);
       border-bottom: 1px solid var(--line2);
@@ -459,6 +462,7 @@
       text-transform: uppercase;
       letter-spacing: 1.5px;
       font-size: 12px;
+      backdrop-filter: blur(10px);
     }
 
     body.ar thead th {
@@ -590,6 +594,10 @@
         align-items: flex-start;
         flex-direction: column;
         padding: 16px 18px;
+      }
+
+      thead th {
+        top: 0;
       }
 
       .langSwitch {
