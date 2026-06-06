@@ -7,16 +7,12 @@
 
   <style>
     :root {
-      --bg: #020607;
-      --panel: rgba(7, 18, 21, 0.92);
-      --panel2: rgba(10, 28, 31, 0.82);
       --line: rgba(136, 255, 248, 0.25);
       --line2: rgba(136, 255, 248, 0.55);
       --text: #ecffff;
       --muted: #83a7a9;
       --accent: #8df8f2;
       --accent2: #3ad9d1;
-      --darkAccent: #073b3c;
       --shadow: 0 0 45px rgba(97, 255, 247, 0.18);
       --logo: url("https://media.discordapp.net/attachments/1402874675419152384/1512818787890630777/image.png?ex=6a2579c9&is=6a242849&hm=476b365eeacc37fcb3df60151d279edca7c0656c4a297eca55a1f5ac7b2d5da6&=&format=webp&quality=lossless");
     }
@@ -118,7 +114,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      padding: 16px 18px;
+      padding: 16px 120px 16px 18px;
       border: 1px solid var(--line);
       border-radius: 24px;
       background: rgba(4, 13, 15, 0.76);
@@ -127,7 +123,10 @@
       position: sticky;
       top: 12px;
       z-index: 20;
-      padding-right: 120px;
+    }
+
+    body.ar .top {
+      padding: 16px 18px 16px 120px;
     }
 
     .brand {
@@ -215,6 +214,10 @@
       pointer-events: none;
     }
 
+    body.ar .hero::before {
+      background-position: left -70px center;
+    }
+
     .heroContent {
       position: relative;
       z-index: 1;
@@ -233,6 +236,10 @@
       letter-spacing: -2px;
       color: #f6ffff;
       text-shadow: 0 0 28px rgba(141, 248, 242, 0.22);
+    }
+
+    body.ar .hero h2 {
+      letter-spacing: 0;
     }
 
     .hero p {
@@ -313,6 +320,10 @@
       letter-spacing: 1.5px;
     }
 
+    body.ar .tabTitle {
+      letter-spacing: 0;
+    }
+
     .tabs {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -369,6 +380,10 @@
       text-transform: uppercase;
     }
 
+    body.ar .stat span {
+      letter-spacing: 0;
+    }
+
     .tableCard {
       margin-top: 18px;
       border: 1px solid var(--line);
@@ -393,6 +408,10 @@
       color: var(--accent);
       font-size: 19px;
       letter-spacing: 0.5px;
+    }
+
+    body.ar .tableHeader h3 {
+      letter-spacing: 0;
     }
 
     .tableHeader p {
@@ -420,6 +439,11 @@
       width: 100%;
       min-width: 900px;
       border-collapse: collapse;
+      direction: ltr;
+    }
+
+    body.ar table {
+      direction: rtl;
     }
 
     thead th {
@@ -440,6 +464,8 @@
     body.ar thead th {
       text-align: right;
       direction: rtl;
+      letter-spacing: 0;
+      font-family: Tahoma, Arial, sans-serif;
     }
 
     tbody td {
@@ -449,6 +475,20 @@
       color: #eaffff;
       font-size: 13px;
       line-height: 1.45;
+      direction: ltr;
+      text-align: left;
+      font-family: Consolas, "Courier New", monospace;
+    }
+
+    body.ar tbody td.itemCell {
+      direction: rtl;
+      text-align: right;
+      font-family: Tahoma, Arial, sans-serif;
+      font-weight: 700;
+    }
+
+    body.ar tbody td.buyCell,
+    body.ar tbody td.locationCell {
       direction: ltr;
       text-align: left;
       font-family: Consolas, "Courier New", monospace;
@@ -468,6 +508,16 @@
       padding: 15px 16px;
       border-top: 1px solid var(--line2);
       border-bottom: 1px solid var(--line2);
+      direction: ltr;
+      text-align: left;
+    }
+
+    body.ar .sectionRow td {
+      direction: rtl;
+      text-align: right;
+      font-family: Tahoma, Arial, sans-serif;
+      letter-spacing: 0;
+      text-transform: none;
     }
 
     .sectionRow span {
@@ -533,12 +583,13 @@
     }
 
     @media (max-width: 850px) {
-      .top {
+      .top,
+      body.ar .top {
         position: relative;
         top: 0;
         align-items: flex-start;
         flex-direction: column;
-        padding-right: 18px;
+        padding: 16px 18px;
       }
 
       .langSwitch {
@@ -1246,7 +1297,7 @@ Gold Painted Tiger	Black Cat Eye	Glasses -> Designer Glasses
 Gray Painted Tiger	Pink & Black Square	Glasses -> Designer Glasses
 Painted Tiger	Tortoiseshell Square	Glasses -> Designer Glasses
 Death	Gray Tortoiseshell Square	Glasses -> Designer Glasses
-War	Gold & Tortoiseshell Square	Glasses -> Designer Glasses
+War	Gold Square	Glasses -> Designer Glasses
 Light Green Vintage Vampire	Tortoiseshell & Brown Square	Glasses -> Designer Glasses
 Dark Green Vintage Vampire	Black & Blue Square	Glasses -> Designer Glasses
 White Vintage Vampire	Black & Brown Square	Glasses -> Designer Glasses
@@ -1424,6 +1475,306 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
       }
     };
 
+    const sectionArabic = {
+      "Hats Next": "القبعات التالية",
+      "Tops Next": "الملابس العلوية التالية",
+      "Legs Next": "البناطيل والسفلي التالي",
+      "Shoes Next": "الأحذية التالية",
+      "Accessories Next": "الإكسسوارات التالية",
+      "Desk Next": "قسم الدسك التالي",
+      "Glasses Next": "النظارات التالية",
+      "Masks Next": "الأقنعة التالية"
+    };
+
+    const exactItemArabic = {
+      "?": "غير معروف",
+      "?(NG)": "غير معروف (NG)",
+      "Placeholder?(NG) ?": "عنصر مؤقت غير معروف (NG)",
+      "Next DLC Item": "عنصر DLC القادم",
+      "Glow Wrist Bands": "أساور معصم مضيئة",
+      "The Drive": "ذا درايف",
+      "R* Hat": "قبعة روكستار",
+      "Unicorn": "يونيكورن",
+      "The Gooch": "ذا غوتش",
+      "The Siren": "ذا سايرن",
+      "The Glamour": "ذا غلامور",
+      "The Concubine": "ذا كونكوباين",
+      "The Azure": "ذا آزور",
+      "The Femme": "ذا فيم",
+      "The Heights": "ذا هايتس",
+      "The Stretch": "ذا سترتش",
+      "The Tuck": "ذا تاك",
+      "The Chimera": "ذا كيميرا",
+      "The Nightblade": "ذا نايت بليد",
+      "The Hakuchou": "ذا هاكوتشو",
+      "The Blazer": "ذا بليزر",
+      "The Manchez": "ذا مانشيز",
+      "The Faggio": "ذا فاجيو",
+      "The Zombie": "ذا زومبي",
+      "The Agitator": "ذا أجيتيتور",
+      "The Spector": "ذا سبكتور",
+      "The Culprit": "ذا كولبريت",
+      "The Sleuth": "ذا سلوث",
+      "The Deflector": "ذا ديفلكتور",
+      "The Python": "ذا بايثون",
+      "The Jaguar": "ذا جاغوار",
+      "The Caiman": "ذا كايمان",
+      "The Anaconda": "ذا أناكوندا",
+      "Death": "الموت",
+      "War": "الحرب",
+      "Famine": "المجاعة",
+      "Sasquatch": "ساسكواتش",
+      "Epsilon": "إبسيلون",
+      "Stocking": "الشراب الاحمر",
+      "Conquest": "الفتح",
+      "Horror Pumpkin": "قرع رعب",
+      "Impotent Rage Outfit": "زي إمبوتنت ريج",
+      "Epsilon Medallion": "ميدالية إبسيلون",
+      "Please Stop Me Hockey": "قناع هوكي أوقفوني",
+      "High Roller  Outfit": "زي هاي رولر",
+      "Valet  Outfit": "زي الفاليه",
+      "Alian Outfit": "زي فضائي",
+      "Captin  Outfit": "زي كابتن"
+    };
+
+    const phraseArabic = [
+      ["Forward & Backward", "أمامي وخلفي"],
+      ["Forwards", "أمامي"],
+      ["Forward", "أمامي"],
+      ["Backwards", "خلفي"],
+      ["Backward", "خلفي"],
+      ["Fitted Cap", "كاب مقاس"],
+      ["Flipped Cap", "كاب مقلوب"],
+      ["Beer Hat", "قبعة بيرة"],
+      ["Top Foam Hat", "قبعة فوم علوية"],
+      ["Top Hat", "قبعة طويلة"],
+      ["Bucket Hat", "قبعة دلو"],
+      ["Construction Helmet", "خوذة بناء"],
+      ["Firefighter", "رجل إطفاء"],
+      ["Helmet", "خوذة"],
+      ["Helmets", "خوذات"],
+      ["Hoodie", "هودي"],
+      ["Sweater", "سويتر"],
+      ["Jacket", "جاكيت"],
+      ["Bomber", "بومبر"],
+      ["T-Shirt", "تي شيرت"],
+      ["Tee", "تي شيرت"],
+      ["Shirt", "قميص"],
+      ["Suit", "بدلة"],
+      ["Racing Suit", "بدلة سباق"],
+      ["Bodysuit", "بدلة جسم"],
+      ["Pajamas", "بيجامة"],
+      ["Pants", "بنطال"],
+      ["Shorts", "شورت"],
+      ["Skirt", "تنورة"],
+      ["Dress", "فستان"],
+      ["Mini Dress", "فستان قصير"],
+      ["Sun Dress", "فستان صيفي"],
+      ["Boots", "بوت"],
+      ["Sneaker Boots", "بوت سنيكرز"],
+      ["Sneaker Wedges", "سنيكرز بكعب"],
+      ["Sneakers", "سنيكرز"],
+      ["Knit Sneakers", "سنيكرز محاك"],
+      ["Pool Sliders", "شبشب مسبح"],
+      ["Flip-Flops", "شبشب"],
+      ["Ugglies & Socks", "أحذية Ugglies وجوارب"],
+      ["Ugglies", "أحذية Ugglies"],
+      ["Earphones", "سماعات"],
+      ["Glow Shades", "نظارات مضيئة"],
+      ["Shades", "نظارات"],
+      ["Glasses", "نظارات"],
+      ["Wraps", "لفافات"],
+      ["Ski", "قناع تزلج"],
+      ["Canvas", "كانفاس"],
+      ["Mask", "قناع"],
+      ["Masks", "أقنعة"],
+      ["Balaclava", "قناع بالاكلافا"],
+      ["Plastic Face", "وجه بلاستيكي"],
+      ["Tech Demon", "قناع شيطان تقني"],
+      ["Vintage Vampire", "مصاص دماء كلاسيكي"],
+      ["Vintage Mummy", "مومياء كلاسيكية"],
+      ["Painted Tiger", "نمر ملون"],
+      ["Horned Skull", "جمجمة بقرون"],
+      ["Spiked Skull", "جمجمة شائكة"],
+      ["Stitched Wire", "سلك مخيط"],
+      ["Paper Bag", "كيس ورقي"],
+      ["Boppers", "هوائيات رأس"],
+      ["Crown", "تاج"],
+      ["Beanie", "قبعة صوف"],
+      ["Cap", "كاب"],
+      ["Hat", "قبعة"],
+      ["Wide", "واسع"],
+      ["Flat", "مسطح"],
+      ["Curved", "منحني"],
+      ["Revere Collar", "قميص ريفير"],
+      ["Pullover", "بلوفر"],
+      ["Cardigan", "كارديغان"],
+      ["Track Top", "توب رياضي"],
+      ["Track Pants", "بنطال رياضي"],
+      ["Battle Pants", "بنطال قتال"],
+      ["Cargos", "كارغو"],
+      ["Guarded Cargos", "كارغو محمي"],
+      ["Slacks", "بنطال رسمي"],
+      ["Turnups", "جينز مطوي"],
+      ["Gaunlet", "قفاز مدرع"],
+      ["Gloves", "قفازات"],
+      ["Necklace", "قلادة"],
+      ["Pendant", "تعليقة"],
+      ["Medallion", "ميدالية"],
+      ["Bracelet", "سوار"],
+      ["Wrist Bands", "أساور معصم"],
+      ["Blose", "بلوزة"],
+      ["Blouse", "بلوزة"],
+      ["Hockey", "هوكي"],
+      ["Outfit", "زي"],
+      ["Vest", "سترة"],
+      ["Varsity", "جاكيت فارسيتي"],
+      ["Parka", "باركا"],
+      ["Smoking Jacket", "جاكيت سموكنغ"],
+      ["Silk Pajamas", "بيجامة حرير"],
+      ["Logo", "شعار"],
+      ["Pattern", "نمط"],
+      ["Patterns", "أنماط"],
+      ["Tie-dye", "تاي داي"],
+      ["Striped", "مخطط"],
+      ["Stripes", "خطوط"],
+      ["Swirl", "دوامة"],
+      ["Flames", "لهب"],
+      ["Big Flames", "لهب كبير"],
+      ["Lightning", "برق"],
+      ["Big Lightning", "برق كبير"],
+      ["Marble", "رخامي"],
+      ["Leopard", "نقشة فهد"],
+      ["Camo", "تمويه"],
+      ["Dazzle", "مموه لامع"],
+      ["Sand Castle", "ساند كاسل"],
+      ["Coin", "كوين"],
+      ["Baroque", "باروك"],
+      ["Flourish", "مزخرف"],
+      ["Floral", "ورود"],
+      ["Flower", "زهور"],
+      ["Checkerboard", "شطرنج"],
+      ["Check", "مربعات"],
+      ["Digital", "ديجيتال"],
+      ["Woodland", "غابة"],
+      ["Splinter", "سبلينتر"],
+      ["Rubberized", "مطاطي"],
+      ["Rounded Heels", "كعب دائري"],
+      ["High Heels", "كعب عالي"],
+      ["High Heeled Sneakers", "سنيكرز بكعب"],
+      ["Light", "فاتح"],
+      ["Dark", "داكن"],
+      ["Bright", "ساطع"],
+      ["Vibrant", "زاهي"],
+      ["Pastel", "باستيلي"],
+      ["Classic", "كلاسيكي"],
+      ["Retro", "ريترو"],
+      ["Traditional", "تقليدي"],
+      ["Festive", "احتفالي"],
+      ["Patriotic", "وطني"],
+      ["Emissive", "مضيء"],
+      ["Wireframe", "وايرفريم"],
+      ["Hypnotic", "منوم"],
+      ["Bearded", "بلحية"],
+      ["Classic Lucifer", "لوسيفر كلاسيكي"],
+      ["Sack Slasher", "ساك سلاشر"],
+      ["Haggard Witch", "ساحرة عجوز"],
+      ["Painted Rabbit", "أرنب ملون"],
+      ["Cracked Puppet", "دمية متشققة"],
+      ["Stitched", "مخيط"],
+      ["Lady Liberty", "سيدة الحرية"],
+      ["Reindeer", "رنة"],
+      ["Snowflake", "ندفة ثلج"],
+      ["Holly", "هولي"],
+      ["Pumpkin", "قرع"],
+      ["Mummy", "مومياء"],
+      ["Krampus", "كرامبوس"],
+      ["Lucifer", "لوسيفر"],
+      ["Alien", "فضائي"],
+      ["Rabbit", "أرنب"],
+      ["Vampire", "مصاص دماء"],
+      ["Zombie", "زومبي"],
+      ["Snowman", "رجل ثلج"],
+      ["Liberals", "ليبرالز"],
+      ["Vampires", "مصاصي دماء"],
+      ["Monkey", "قرد"],
+      ["Chimp", "شمبانزي"],
+      ["Bear", "دب"],
+      ["Stag", "غزال"],
+      ["Cat", "قطة"],
+      ["Wild Cat", "قط بري"],
+      ["Hero", "بطل"],
+      ["Sunglasses", "نظارات شمسية"],
+      ["Scratch", "خدش"],
+      ["Pyramid", "هرم"],
+      ["Cassette", "كاسيت"],
+      ["Illusion", "وهم"],
+      ["Oeuf", "بيضة"],
+      ["Skull", "جمجمة"],
+      ["Crosswalk", "ممر مشاة"],
+      ["Drone", "درون"],
+      ["Accountant", "محاسب"],
+      ["Western", "ويسترن"],
+      ["Nagasaki", "ناغازاكي"],
+      ["Warstock", "وارستوك"],
+      ["Ammu-Nation", "أمو نيشن"],
+      ["Shrewsbury", "شروزبري"],
+      ["Hawk & Little", "هوك أند ليتل"],
+      ["Vom Feuer", "فوم فيور"],
+      ["Coil", "كويل"]
+    ];
+
+    const colorArabic = [
+      ["Black", "أسود"],
+      ["White", "أبيض"],
+      ["Red", "أحمر"],
+      ["Blue", "أزرق"],
+      ["Green", "أخضر"],
+      ["Yellow", "أصفر"],
+      ["Purple", "بنفسجي"],
+      ["Pink", "وردي"],
+      ["Orange", "برتقالي"],
+      ["Gray", "رمادي"],
+      ["Grey", "رمادي"],
+      ["Aqua", "سماوي"],
+      ["Cyan", "سماوي"],
+      ["Teal", "فيروزي"],
+      ["Magenta", "أرجواني"],
+      ["Lime", "ليموني"],
+      ["Moss", "طحلبي"],
+      ["Emerald", "زمردي"],
+      ["Burgundy", "عنابي"],
+      ["Chocolate", "شوكولاتي"],
+      ["Beige", "بيج"],
+      ["Ice", "ثلجي"],
+      ["Scarlet", "قرمزي"],
+      ["Amber", "كهرماني"],
+      ["Navy", "كحلي"],
+      ["Royal", "ملكي"],
+      ["Hot", "فاقع"],
+      ["Cream", "كريمي"],
+      ["Brown", "بني"],
+      ["Gold", "ذهبي"],
+      ["Silver", "فضي"],
+      ["Copper", "نحاسي"],
+      ["Rose", "وردي ذهبي"],
+      ["Lavender", "لافندر"],
+      ["Peach", "خوخي"],
+      ["Lilac", "ليلكي"],
+      ["Lemon", "ليموني"],
+      ["Mustard", "خردلي"],
+      ["Charcoal", "فحمي"],
+      ["Wine", "خمري"],
+      ["Slate", "سليت"],
+      ["Khaki", "كاكي"],
+      ["Sand", "رملي"],
+      ["Dusty", "مغبر"],
+      ["Pale", "باهت"],
+      ["Lightgreen", "أخضر فاتح"],
+      ["Light", "فاتح"],
+      ["Dark", "داكن"]
+    ];
+
     const state = {
       lang: "en",
       gender: "male",
@@ -1467,12 +1818,49 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
         .replaceAll("'", "&#039;");
     }
 
+    function escapeRegExp(value) {
+      return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
     function t(key) {
       return translations[state.lang][key] || key;
     }
 
     function isAvailable() {
       return state.gender === "male" && state.type === "clothing";
+    }
+
+    function translateSection(value) {
+      if (state.lang !== "ar") return value;
+      return sectionArabic[value] || translateItemToArabic(value);
+    }
+
+    function translateItemToArabic(value) {
+      let text = String(value || "").trim();
+
+      if (exactItemArabic[text]) return exactItemArabic[text];
+
+      const hasNG = /\(NG\)/i.test(text);
+      text = text.replace(/\(NG\)/gi, "").trim();
+
+      const replacements = [...phraseArabic, ...colorArabic];
+
+      replacements.forEach(([en, ar]) => {
+        const pattern = new RegExp(escapeRegExp(en), "gi");
+        text = text.replace(pattern, ar);
+      });
+
+      text = text
+        .replace(/\s+/g, " ")
+        .replace(/\s+&\s+/g, " و ")
+        .replace(/\//g, " / ")
+        .trim();
+
+      return hasNG ? `${text} (NG)` : text;
+    }
+
+    function displayItem(value) {
+      return state.lang === "ar" ? translateItemToArabic(value) : value;
     }
 
     function getFilteredRows() {
@@ -1482,10 +1870,11 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
 
       return rows.filter(row => {
         if (row.section) {
-          return row.section.toLowerCase().includes(q);
+          return `${row.section} ${translateSection(row.section)}`.toLowerCase().includes(q);
         }
 
-        return `${row.item} ${row.buy} ${row.location}`.toLowerCase().includes(q);
+        const arItem = translateItemToArabic(row.item);
+        return `${row.item} ${arItem} ${row.buy} ${row.location}`.toLowerCase().includes(q);
       });
     }
 
@@ -1532,6 +1921,7 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
       if (!available) {
         document.getElementById("visibleCount").textContent = t("unavailableTitle");
         document.getElementById("visibleCountTop").textContent = "0";
+        tableBody.innerHTML = "";
         return;
       }
 
@@ -1541,16 +1931,16 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
         if (row.section) {
           return `
             <tr class="sectionRow">
-              <td colspan="3"><span>${escapeHTML(row.section)}</span></td>
+              <td colspan="3"><span>${escapeHTML(translateSection(row.section))}</span></td>
             </tr>
           `;
         }
 
         return `
           <tr>
-            <td>${escapeHTML(row.item)}</td>
-            <td>${escapeHTML(row.buy)}</td>
-            <td>${escapeHTML(row.location)}</td>
+            <td class="itemCell">${escapeHTML(displayItem(row.item))}</td>
+            <td class="buyCell">${escapeHTML(row.buy)}</td>
+            <td class="locationCell">${escapeHTML(row.location)}</td>
           </tr>
         `;
       }).join("");
