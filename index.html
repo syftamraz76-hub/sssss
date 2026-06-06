@@ -1455,7 +1455,7 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
         heroSmall: "تحديث 2025 قريبا",
         heroTitle: "قائمة ملابس الذكور",
         heroText: "صفحة GenderSwap بتصميم FBI VRP. قسم Male + Clothing متوفر حاليا. قسم Female و Tattoos غير متوفرة حاليا.",
-        searchPlaceholder: "ابحث عن الغرض / الي لازم تشتريه / اسم الخيار...",
+        searchPlaceholder: "ابحث عن الغرض الي بيجيك بالعربي، أو ابحث بالإنجليزي عن أي خيار...",
         clearBtn: "مسح البحث",
         genderTitle: "الجنس",
         maleBtn: "ذكر",
@@ -1500,6 +1500,7 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
       "Placeholder?(NG) ?": "عنصر مؤقت غير معروف (NG)",
       "Next DLC Item": "عنصر DLC القادم",
       "Glow Wrist Bands": "أساور معصم مضيئة",
+      "Stocking": "الشراب الاحمر",
       "The Drive": "ذا درايف",
       "R* Hat": "قبعة روكستار",
       "Unicorn": "يونيكورن",
@@ -1533,7 +1534,6 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
       "Famine": "المجاعة",
       "Sasquatch": "ساسكواتش",
       "Epsilon": "إبسيلون",
-      "Stocking": "الشراب الاحمر",
       "Conquest": "الفتح",
       "Horror Pumpkin": "قرع رعب",
       "Impotent Rage Outfit": "زي إمبوتنت ريج",
@@ -1543,6 +1543,10 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
       "Valet  Outfit": "زي الفاليه",
       "Alian Outfit": "زي فضائي",
       "Captin  Outfit": "زي كابتن"
+    };
+
+    const arabicSearchAliases = {
+      "Stocking": "الشراب الاحمر شراب جورب جراب قناع جورب احمر الأحمر stocking dirty knit balaclava"
     };
 
     const phraseArabic = [
@@ -1830,6 +1834,17 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
       return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     }
 
+    function normalizeSearch(value) {
+      return String(value || "")
+        .toLowerCase()
+        .replace(/[ًٌٍَُِّْـ]/g, "")
+        .replace(/[إأآا]/g, "ا")
+        .replace(/ة/g, "ه")
+        .replace(/ى/g, "ي")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
     function t(key) {
       return translations[state.lang][key] || key;
     }
@@ -1871,18 +1886,46 @@ Epsilon Medallion	Grapes Mask	Masks -> Casino
       return state.lang === "ar" ? translateItemToArabic(value) : value;
     }
 
-    function getFilteredRows() {
-      if (!state.search.trim()) return rows;
+    function getArabicSearchText(row) {
+      if (row.section) {
+        return `${row.section} ${translateSection(row.section)}`;
+      }
 
-      const q = state.search.toLowerCase().trim();
+      const arItem = translateItemToArabic(row.item);
+      const alias = arabicSearchAliases[row.item] || "";
+
+      return [
+        arItem,
+        alias,
+        row.item,
+        row.buy,
+        row.location
+      ].join(" ");
+    }
+
+    function getEnglishSearchText(row) {
+      if (row.section) {
+        return row.section;
+      }
+
+      return [
+        row.item,
+        row.buy,
+        row.location
+      ].join(" ");
+    }
+
+    function getFilteredRows() {
+      const q = normalizeSearch(state.search);
+
+      if (!q) return rows;
 
       return rows.filter(row => {
-        if (row.section) {
-          return `${row.section} ${translateSection(row.section)}`.toLowerCase().includes(q);
-        }
+        const haystack = state.lang === "ar"
+          ? getArabicSearchText(row)
+          : getEnglishSearchText(row);
 
-        const arItem = translateItemToArabic(row.item);
-        return `${row.item} ${arItem} ${row.buy} ${row.location}`.toLowerCase().includes(q);
+        return normalizeSearch(haystack).includes(q);
       });
     }
 
